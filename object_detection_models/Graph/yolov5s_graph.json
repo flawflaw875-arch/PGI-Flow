@@ -1,0 +1,2183 @@
+{
+  "architecture": "YOLOv5-s",
+  "total_nodes": 207,
+  "total_edges": 233,
+  "nodes": [
+    {
+      "id": 0,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "Stem_Conv"
+    },
+    {
+      "id": 1,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "Stem_BN"
+    },
+    {
+      "id": 2,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "Stem_SiLU"
+    },
+    {
+      "id": 3,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "B_P2_Conv_Conv"
+    },
+    {
+      "id": 4,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_Conv_BN"
+    },
+    {
+      "id": 5,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_Conv_SiLU"
+    },
+    {
+      "id": 6,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P2_C3_route_Conv"
+    },
+    {
+      "id": 7,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_C3_route_BN"
+    },
+    {
+      "id": 8,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_C3_route_SiLU"
+    },
+    {
+      "id": 9,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P2_C3_main_Conv"
+    },
+    {
+      "id": 10,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_C3_main_BN"
+    },
+    {
+      "id": 11,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_C3_main_SiLU"
+    },
+    {
+      "id": 12,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P2_C3_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 13,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_C3_bottle_0_cv1_BN"
+    },
+    {
+      "id": 14,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_C3_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 15,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P2_C3_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 16,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_C3_bottle_0_cv2_BN"
+    },
+    {
+      "id": 17,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_C3_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 18,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P2_C3_bottle_0_Add"
+    },
+    {
+      "id": 19,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "B_P2_C3_Concat"
+    },
+    {
+      "id": 20,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P2_C3_cv3_Conv"
+    },
+    {
+      "id": 21,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P2_C3_cv3_BN"
+    },
+    {
+      "id": 22,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P2_C3_cv3_SiLU"
+    },
+    {
+      "id": 23,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "B_P3_Conv_Conv"
+    },
+    {
+      "id": 24,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_Conv_BN"
+    },
+    {
+      "id": 25,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_Conv_SiLU"
+    },
+    {
+      "id": 26,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_route_Conv"
+    },
+    {
+      "id": 27,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_route_BN"
+    },
+    {
+      "id": 28,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_route_SiLU"
+    },
+    {
+      "id": 29,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_main_Conv"
+    },
+    {
+      "id": 30,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_main_BN"
+    },
+    {
+      "id": 31,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_main_SiLU"
+    },
+    {
+      "id": 32,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 33,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_0_cv1_BN"
+    },
+    {
+      "id": 34,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 35,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P3_C3_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 36,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_0_cv2_BN"
+    },
+    {
+      "id": 37,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 38,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P3_C3_bottle_0_Add"
+    },
+    {
+      "id": 39,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_bottle_1_cv1_Conv"
+    },
+    {
+      "id": 40,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_1_cv1_BN"
+    },
+    {
+      "id": 41,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_1_cv1_SiLU"
+    },
+    {
+      "id": 42,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P3_C3_bottle_1_cv2_Conv"
+    },
+    {
+      "id": 43,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_1_cv2_BN"
+    },
+    {
+      "id": 44,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_1_cv2_SiLU"
+    },
+    {
+      "id": 45,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P3_C3_bottle_1_Add"
+    },
+    {
+      "id": 46,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_bottle_2_cv1_Conv"
+    },
+    {
+      "id": 47,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_2_cv1_BN"
+    },
+    {
+      "id": 48,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_2_cv1_SiLU"
+    },
+    {
+      "id": 49,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P3_C3_bottle_2_cv2_Conv"
+    },
+    {
+      "id": 50,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_bottle_2_cv2_BN"
+    },
+    {
+      "id": 51,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_bottle_2_cv2_SiLU"
+    },
+    {
+      "id": 52,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P3_C3_bottle_2_Add"
+    },
+    {
+      "id": 53,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "B_P3_C3_Concat"
+    },
+    {
+      "id": 54,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P3_C3_cv3_Conv"
+    },
+    {
+      "id": 55,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P3_C3_cv3_BN"
+    },
+    {
+      "id": 56,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P3_C3_cv3_SiLU"
+    },
+    {
+      "id": 57,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "B_P4_Conv_Conv"
+    },
+    {
+      "id": 58,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_Conv_BN"
+    },
+    {
+      "id": 59,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_Conv_SiLU"
+    },
+    {
+      "id": 60,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_route_Conv"
+    },
+    {
+      "id": 61,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_route_BN"
+    },
+    {
+      "id": 62,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_route_SiLU"
+    },
+    {
+      "id": 63,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_main_Conv"
+    },
+    {
+      "id": 64,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_main_BN"
+    },
+    {
+      "id": 65,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_main_SiLU"
+    },
+    {
+      "id": 66,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 67,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_0_cv1_BN"
+    },
+    {
+      "id": 68,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 69,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P4_C3_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 70,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_0_cv2_BN"
+    },
+    {
+      "id": 71,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 72,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P4_C3_bottle_0_Add"
+    },
+    {
+      "id": 73,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_bottle_1_cv1_Conv"
+    },
+    {
+      "id": 74,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_1_cv1_BN"
+    },
+    {
+      "id": 75,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_1_cv1_SiLU"
+    },
+    {
+      "id": 76,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P4_C3_bottle_1_cv2_Conv"
+    },
+    {
+      "id": 77,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_1_cv2_BN"
+    },
+    {
+      "id": 78,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_1_cv2_SiLU"
+    },
+    {
+      "id": 79,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P4_C3_bottle_1_Add"
+    },
+    {
+      "id": 80,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_bottle_2_cv1_Conv"
+    },
+    {
+      "id": 81,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_2_cv1_BN"
+    },
+    {
+      "id": 82,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_2_cv1_SiLU"
+    },
+    {
+      "id": 83,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P4_C3_bottle_2_cv2_Conv"
+    },
+    {
+      "id": 84,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_bottle_2_cv2_BN"
+    },
+    {
+      "id": 85,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_bottle_2_cv2_SiLU"
+    },
+    {
+      "id": 86,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P4_C3_bottle_2_Add"
+    },
+    {
+      "id": 87,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "B_P4_C3_Concat"
+    },
+    {
+      "id": 88,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P4_C3_cv3_Conv"
+    },
+    {
+      "id": 89,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P4_C3_cv3_BN"
+    },
+    {
+      "id": 90,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P4_C3_cv3_SiLU"
+    },
+    {
+      "id": 91,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "B_P5_Conv_Conv"
+    },
+    {
+      "id": 92,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_Conv_BN"
+    },
+    {
+      "id": 93,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_Conv_SiLU"
+    },
+    {
+      "id": 94,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_C3_route_Conv"
+    },
+    {
+      "id": 95,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_C3_route_BN"
+    },
+    {
+      "id": 96,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_C3_route_SiLU"
+    },
+    {
+      "id": 97,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_C3_main_Conv"
+    },
+    {
+      "id": 98,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_C3_main_BN"
+    },
+    {
+      "id": 99,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_C3_main_SiLU"
+    },
+    {
+      "id": 100,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_C3_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 101,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_C3_bottle_0_cv1_BN"
+    },
+    {
+      "id": 102,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_C3_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 103,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "B_P5_C3_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 104,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_C3_bottle_0_cv2_BN"
+    },
+    {
+      "id": 105,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_C3_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 106,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "B_P5_C3_bottle_0_Add"
+    },
+    {
+      "id": 107,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "B_P5_C3_Concat"
+    },
+    {
+      "id": 108,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_C3_cv3_Conv"
+    },
+    {
+      "id": 109,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_C3_cv3_BN"
+    },
+    {
+      "id": 110,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_C3_cv3_SiLU"
+    },
+    {
+      "id": 111,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_SPPF_cv1_Conv"
+    },
+    {
+      "id": 112,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_SPPF_cv1_BN"
+    },
+    {
+      "id": 113,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_SPPF_cv1_SiLU"
+    },
+    {
+      "id": 114,
+      "op_idx": 9,
+      "op_name": "MaxPool_SPP",
+      "annotation": "B_P5_SPPF_pool1"
+    },
+    {
+      "id": 115,
+      "op_idx": 9,
+      "op_name": "MaxPool_SPP",
+      "annotation": "B_P5_SPPF_pool2"
+    },
+    {
+      "id": 116,
+      "op_idx": 9,
+      "op_name": "MaxPool_SPP",
+      "annotation": "B_P5_SPPF_pool3"
+    },
+    {
+      "id": 117,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "B_P5_SPPF_Concat"
+    },
+    {
+      "id": 118,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "B_P5_SPPF_cv2_Conv"
+    },
+    {
+      "id": 119,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "B_P5_SPPF_cv2_BN"
+    },
+    {
+      "id": 120,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "B_P5_SPPF_cv2_SiLU"
+    },
+    {
+      "id": 121,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "N_Up_P5"
+    },
+    {
+      "id": 122,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_Concat_P4"
+    },
+    {
+      "id": 123,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_route_Conv"
+    },
+    {
+      "id": 124,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_route_BN"
+    },
+    {
+      "id": 125,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_route_SiLU"
+    },
+    {
+      "id": 126,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_main_Conv"
+    },
+    {
+      "id": 127,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_main_BN"
+    },
+    {
+      "id": 128,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_main_SiLU"
+    },
+    {
+      "id": 129,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 130,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_bottle_0_cv1_BN"
+    },
+    {
+      "id": 131,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 132,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "N_P4_C3_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 133,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_bottle_0_cv2_BN"
+    },
+    {
+      "id": 134,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 135,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "N_P4_C3_bottle_0_Add"
+    },
+    {
+      "id": 136,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_P4_C3_Concat"
+    },
+    {
+      "id": 137,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_cv3_Conv"
+    },
+    {
+      "id": 138,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_cv3_BN"
+    },
+    {
+      "id": 139,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_cv3_SiLU"
+    },
+    {
+      "id": 140,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "N_Up_P4"
+    },
+    {
+      "id": 141,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_Concat_P3"
+    },
+    {
+      "id": 142,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P3_C3_Head_route_Conv"
+    },
+    {
+      "id": 143,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P3_C3_Head_route_BN"
+    },
+    {
+      "id": 144,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P3_C3_Head_route_SiLU"
+    },
+    {
+      "id": 145,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P3_C3_Head_main_Conv"
+    },
+    {
+      "id": 146,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P3_C3_Head_main_BN"
+    },
+    {
+      "id": 147,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P3_C3_Head_main_SiLU"
+    },
+    {
+      "id": 148,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P3_C3_Head_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 149,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P3_C3_Head_bottle_0_cv1_BN"
+    },
+    {
+      "id": 150,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P3_C3_Head_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 151,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "N_P3_C3_Head_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 152,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P3_C3_Head_bottle_0_cv2_BN"
+    },
+    {
+      "id": 153,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P3_C3_Head_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 154,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "N_P3_C3_Head_bottle_0_Add"
+    },
+    {
+      "id": 155,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_P3_C3_Head_Concat"
+    },
+    {
+      "id": 156,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P3_C3_Head_cv3_Conv"
+    },
+    {
+      "id": 157,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P3_C3_Head_cv3_BN"
+    },
+    {
+      "id": 158,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P3_C3_Head_cv3_SiLU"
+    },
+    {
+      "id": 159,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "N_Down_P3_Conv"
+    },
+    {
+      "id": 160,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_Down_P3_BN"
+    },
+    {
+      "id": 161,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_Down_P3_SiLU"
+    },
+    {
+      "id": 162,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_Concat_P4_2"
+    },
+    {
+      "id": 163,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_Head_route_Conv"
+    },
+    {
+      "id": 164,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_Head_route_BN"
+    },
+    {
+      "id": 165,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_Head_route_SiLU"
+    },
+    {
+      "id": 166,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_Head_main_Conv"
+    },
+    {
+      "id": 167,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_Head_main_BN"
+    },
+    {
+      "id": 168,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_Head_main_SiLU"
+    },
+    {
+      "id": 169,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_Head_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 170,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_Head_bottle_0_cv1_BN"
+    },
+    {
+      "id": 171,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_Head_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 172,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "N_P4_C3_Head_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 173,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_Head_bottle_0_cv2_BN"
+    },
+    {
+      "id": 174,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_Head_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 175,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "N_P4_C3_Head_bottle_0_Add"
+    },
+    {
+      "id": 176,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_P4_C3_Head_Concat"
+    },
+    {
+      "id": 177,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P4_C3_Head_cv3_Conv"
+    },
+    {
+      "id": 178,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P4_C3_Head_cv3_BN"
+    },
+    {
+      "id": 179,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P4_C3_Head_cv3_SiLU"
+    },
+    {
+      "id": 180,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "N_Down_P4_Conv"
+    },
+    {
+      "id": 181,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_Down_P4_BN"
+    },
+    {
+      "id": 182,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_Down_P4_SiLU"
+    },
+    {
+      "id": 183,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_Concat_P5_2"
+    },
+    {
+      "id": 184,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P5_C3_Head_route_Conv"
+    },
+    {
+      "id": 185,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P5_C3_Head_route_BN"
+    },
+    {
+      "id": 186,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P5_C3_Head_route_SiLU"
+    },
+    {
+      "id": 187,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P5_C3_Head_main_Conv"
+    },
+    {
+      "id": 188,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P5_C3_Head_main_BN"
+    },
+    {
+      "id": 189,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P5_C3_Head_main_SiLU"
+    },
+    {
+      "id": 190,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P5_C3_Head_bottle_0_cv1_Conv"
+    },
+    {
+      "id": 191,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P5_C3_Head_bottle_0_cv1_BN"
+    },
+    {
+      "id": 192,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P5_C3_Head_bottle_0_cv1_SiLU"
+    },
+    {
+      "id": 193,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "N_P5_C3_Head_bottle_0_cv2_Conv"
+    },
+    {
+      "id": 194,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P5_C3_Head_bottle_0_cv2_BN"
+    },
+    {
+      "id": 195,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P5_C3_Head_bottle_0_cv2_SiLU"
+    },
+    {
+      "id": 196,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "N_P5_C3_Head_bottle_0_Add"
+    },
+    {
+      "id": 197,
+      "op_idx": 19,
+      "op_name": "Concat",
+      "annotation": "N_P5_C3_Head_Concat"
+    },
+    {
+      "id": 198,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "N_P5_C3_Head_cv3_Conv"
+    },
+    {
+      "id": 199,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "N_P5_C3_Head_cv3_BN"
+    },
+    {
+      "id": 200,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "N_P5_C3_Head_cv3_SiLU"
+    },
+    {
+      "id": 201,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "H_P3_Pred"
+    },
+    {
+      "id": 202,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "H_P3_Sigmoid"
+    },
+    {
+      "id": 203,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "H_P4_Pred"
+    },
+    {
+      "id": 204,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "H_P4_Sigmoid"
+    },
+    {
+      "id": 205,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "H_P5_Pred"
+    },
+    {
+      "id": 206,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "H_P5_Sigmoid"
+    }
+  ],
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      11,
+      18
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      8,
+      19
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      23,
+      24
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      25,
+      26
+    ],
+    [
+      26,
+      27
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      25,
+      29
+    ],
+    [
+      29,
+      30
+    ],
+    [
+      30,
+      31
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      32,
+      33
+    ],
+    [
+      33,
+      34
+    ],
+    [
+      34,
+      35
+    ],
+    [
+      35,
+      36
+    ],
+    [
+      36,
+      37
+    ],
+    [
+      31,
+      38
+    ],
+    [
+      37,
+      38
+    ],
+    [
+      38,
+      39
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      40,
+      41
+    ],
+    [
+      41,
+      42
+    ],
+    [
+      42,
+      43
+    ],
+    [
+      43,
+      44
+    ],
+    [
+      38,
+      45
+    ],
+    [
+      44,
+      45
+    ],
+    [
+      45,
+      46
+    ],
+    [
+      46,
+      47
+    ],
+    [
+      47,
+      48
+    ],
+    [
+      48,
+      49
+    ],
+    [
+      49,
+      50
+    ],
+    [
+      50,
+      51
+    ],
+    [
+      45,
+      52
+    ],
+    [
+      51,
+      52
+    ],
+    [
+      28,
+      53
+    ],
+    [
+      52,
+      53
+    ],
+    [
+      53,
+      54
+    ],
+    [
+      54,
+      55
+    ],
+    [
+      55,
+      56
+    ],
+    [
+      56,
+      57
+    ],
+    [
+      57,
+      58
+    ],
+    [
+      58,
+      59
+    ],
+    [
+      59,
+      60
+    ],
+    [
+      60,
+      61
+    ],
+    [
+      61,
+      62
+    ],
+    [
+      59,
+      63
+    ],
+    [
+      63,
+      64
+    ],
+    [
+      64,
+      65
+    ],
+    [
+      65,
+      66
+    ],
+    [
+      66,
+      67
+    ],
+    [
+      67,
+      68
+    ],
+    [
+      68,
+      69
+    ],
+    [
+      69,
+      70
+    ],
+    [
+      70,
+      71
+    ],
+    [
+      65,
+      72
+    ],
+    [
+      71,
+      72
+    ],
+    [
+      72,
+      73
+    ],
+    [
+      73,
+      74
+    ],
+    [
+      74,
+      75
+    ],
+    [
+      75,
+      76
+    ],
+    [
+      76,
+      77
+    ],
+    [
+      77,
+      78
+    ],
+    [
+      72,
+      79
+    ],
+    [
+      78,
+      79
+    ],
+    [
+      79,
+      80
+    ],
+    [
+      80,
+      81
+    ],
+    [
+      81,
+      82
+    ],
+    [
+      82,
+      83
+    ],
+    [
+      83,
+      84
+    ],
+    [
+      84,
+      85
+    ],
+    [
+      79,
+      86
+    ],
+    [
+      85,
+      86
+    ],
+    [
+      62,
+      87
+    ],
+    [
+      86,
+      87
+    ],
+    [
+      87,
+      88
+    ],
+    [
+      88,
+      89
+    ],
+    [
+      89,
+      90
+    ],
+    [
+      90,
+      91
+    ],
+    [
+      91,
+      92
+    ],
+    [
+      92,
+      93
+    ],
+    [
+      93,
+      94
+    ],
+    [
+      94,
+      95
+    ],
+    [
+      95,
+      96
+    ],
+    [
+      93,
+      97
+    ],
+    [
+      97,
+      98
+    ],
+    [
+      98,
+      99
+    ],
+    [
+      99,
+      100
+    ],
+    [
+      100,
+      101
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      102,
+      103
+    ],
+    [
+      103,
+      104
+    ],
+    [
+      104,
+      105
+    ],
+    [
+      99,
+      106
+    ],
+    [
+      105,
+      106
+    ],
+    [
+      96,
+      107
+    ],
+    [
+      106,
+      107
+    ],
+    [
+      107,
+      108
+    ],
+    [
+      108,
+      109
+    ],
+    [
+      109,
+      110
+    ],
+    [
+      110,
+      111
+    ],
+    [
+      111,
+      112
+    ],
+    [
+      112,
+      113
+    ],
+    [
+      113,
+      114
+    ],
+    [
+      114,
+      115
+    ],
+    [
+      115,
+      116
+    ],
+    [
+      113,
+      117
+    ],
+    [
+      114,
+      117
+    ],
+    [
+      115,
+      117
+    ],
+    [
+      116,
+      117
+    ],
+    [
+      117,
+      118
+    ],
+    [
+      118,
+      119
+    ],
+    [
+      119,
+      120
+    ],
+    [
+      120,
+      121
+    ],
+    [
+      121,
+      122
+    ],
+    [
+      90,
+      122
+    ],
+    [
+      122,
+      123
+    ],
+    [
+      123,
+      124
+    ],
+    [
+      124,
+      125
+    ],
+    [
+      122,
+      126
+    ],
+    [
+      126,
+      127
+    ],
+    [
+      127,
+      128
+    ],
+    [
+      128,
+      129
+    ],
+    [
+      129,
+      130
+    ],
+    [
+      130,
+      131
+    ],
+    [
+      131,
+      132
+    ],
+    [
+      132,
+      133
+    ],
+    [
+      133,
+      134
+    ],
+    [
+      128,
+      135
+    ],
+    [
+      134,
+      135
+    ],
+    [
+      125,
+      136
+    ],
+    [
+      135,
+      136
+    ],
+    [
+      136,
+      137
+    ],
+    [
+      137,
+      138
+    ],
+    [
+      138,
+      139
+    ],
+    [
+      139,
+      140
+    ],
+    [
+      140,
+      141
+    ],
+    [
+      56,
+      141
+    ],
+    [
+      141,
+      142
+    ],
+    [
+      142,
+      143
+    ],
+    [
+      143,
+      144
+    ],
+    [
+      141,
+      145
+    ],
+    [
+      145,
+      146
+    ],
+    [
+      146,
+      147
+    ],
+    [
+      147,
+      148
+    ],
+    [
+      148,
+      149
+    ],
+    [
+      149,
+      150
+    ],
+    [
+      150,
+      151
+    ],
+    [
+      151,
+      152
+    ],
+    [
+      152,
+      153
+    ],
+    [
+      147,
+      154
+    ],
+    [
+      153,
+      154
+    ],
+    [
+      144,
+      155
+    ],
+    [
+      154,
+      155
+    ],
+    [
+      155,
+      156
+    ],
+    [
+      156,
+      157
+    ],
+    [
+      157,
+      158
+    ],
+    [
+      158,
+      159
+    ],
+    [
+      159,
+      160
+    ],
+    [
+      160,
+      161
+    ],
+    [
+      161,
+      162
+    ],
+    [
+      139,
+      162
+    ],
+    [
+      162,
+      163
+    ],
+    [
+      163,
+      164
+    ],
+    [
+      164,
+      165
+    ],
+    [
+      162,
+      166
+    ],
+    [
+      166,
+      167
+    ],
+    [
+      167,
+      168
+    ],
+    [
+      168,
+      169
+    ],
+    [
+      169,
+      170
+    ],
+    [
+      170,
+      171
+    ],
+    [
+      171,
+      172
+    ],
+    [
+      172,
+      173
+    ],
+    [
+      173,
+      174
+    ],
+    [
+      168,
+      175
+    ],
+    [
+      174,
+      175
+    ],
+    [
+      165,
+      176
+    ],
+    [
+      175,
+      176
+    ],
+    [
+      176,
+      177
+    ],
+    [
+      177,
+      178
+    ],
+    [
+      178,
+      179
+    ],
+    [
+      179,
+      180
+    ],
+    [
+      180,
+      181
+    ],
+    [
+      181,
+      182
+    ],
+    [
+      182,
+      183
+    ],
+    [
+      120,
+      183
+    ],
+    [
+      183,
+      184
+    ],
+    [
+      184,
+      185
+    ],
+    [
+      185,
+      186
+    ],
+    [
+      183,
+      187
+    ],
+    [
+      187,
+      188
+    ],
+    [
+      188,
+      189
+    ],
+    [
+      189,
+      190
+    ],
+    [
+      190,
+      191
+    ],
+    [
+      191,
+      192
+    ],
+    [
+      192,
+      193
+    ],
+    [
+      193,
+      194
+    ],
+    [
+      194,
+      195
+    ],
+    [
+      189,
+      196
+    ],
+    [
+      195,
+      196
+    ],
+    [
+      186,
+      197
+    ],
+    [
+      196,
+      197
+    ],
+    [
+      197,
+      198
+    ],
+    [
+      198,
+      199
+    ],
+    [
+      199,
+      200
+    ],
+    [
+      158,
+      201
+    ],
+    [
+      201,
+      202
+    ],
+    [
+      179,
+      203
+    ],
+    [
+      203,
+      204
+    ],
+    [
+      200,
+      205
+    ],
+    [
+      205,
+      206
+    ]
+  ]
+}

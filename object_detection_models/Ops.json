@@ -1,0 +1,290 @@
+[
+  {
+    "Idx": 0,
+    "OperationName": "Conv_1x1",
+    "Description": "Channel Projection",
+    "API": "nn.Conv2d",
+    "Configuration": "k=1, s=1",
+    "Trainable": true,
+    "Parameters": "Weights (W), Bias (b)"
+  },
+  {
+    "Idx": 1,
+    "OperationName": "Conv_3x3",
+    "Description": "Feature Extraction",
+    "API": "nn.Conv2d",
+    "Configuration": "k=3, s=1, p=1",
+    "Trainable": true,
+    "Parameters": "Weights (W), Bias (b)"
+  },
+  {
+    "Idx": 2,
+    "OperationName": "Conv_3x3_DS",
+    "Description": "Spatial Downsampling",
+    "API": "nn.Conv2d",
+    "Configuration": "k=3, s=2, p=1",
+    "Trainable": true,
+    "Parameters": "Weights (W), Bias (b)"
+  },
+  {
+    "Idx": 3,
+    "OperationName": "Conv_7x7_DS",
+    "Description": "Stem / Initial Compression",
+    "API": "nn.Conv2d",
+    "Configuration": "k=7, s=2, p=3",
+    "Trainable": true,
+    "Parameters": "Weights (W), Bias (b)"
+  },
+  {
+    "Idx": 4,
+    "OperationName": "Conv_3x3_Dil",
+    "Description": "Dilated (Atrous) Conv",
+    "API": "nn.Conv2d",
+    "Configuration": "k=3, d=6, p=6",
+    "Trainable": true,
+    "Parameters": "Weights (W), Bias (b)"
+  },
+  {
+    "Idx": 5,
+    "OperationName": "DWConv_3x3",
+    "Description": "Depthwise Conv",
+    "API": "nn.Conv2d",
+    "Configuration": "k=3, g=C_in",
+    "Trainable": true,
+    "Parameters": "Depthwise Weights (W)"
+  },
+  {
+    "Idx": 6,
+    "OperationName": "DWConv_3x3_DS",
+    "Description": "Depthwise Downsampling",
+    "API": "nn.Conv2d",
+    "Configuration": "k=3, s=2, g=C_in",
+    "Trainable": true,
+    "Parameters": "Depthwise Weights (W)"
+  },
+  {
+    "Idx": 7,
+    "OperationName": "DWConv_5x5",
+    "Description": "Large Kernel Depthwise",
+    "API": "nn.Conv2d",
+    "Configuration": "k=5, s=1, g=C_in",
+    "Trainable": true,
+    "Parameters": "Depthwise Weights (W)"
+  },
+  {
+    "Idx": 8,
+    "OperationName": "MaxPool_2x2",
+    "Description": "Max Pooling",
+    "API": "nn.MaxPool2d",
+    "Configuration": "k=2, s=2",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 9,
+    "OperationName": "MaxPool_SPP",
+    "Description": "Spatial Pyramid Pooling",
+    "API": "nn.MaxPool2d",
+    "Configuration": "k=5, s=1, p=2",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 10,
+    "OperationName": "AvgPool_Global",
+    "Description": "Global Average Pooling",
+    "API": "nn.AdaptiveAvgPool2d",
+    "Configuration": "Output (1,1)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 11,
+    "OperationName": "Upsample_2x",
+    "Description": "Spatial Upsampling",
+    "API": "F.interpolate",
+    "Configuration": "Scale (2.0)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 12,
+    "OperationName": "RoIAlign_7x7",
+    "Description": "Region of Interest Align",
+    "API": "ops.RoI_align",
+    "Configuration": "Output (7,7)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 13,
+    "OperationName": "BatchNorm",
+    "Description": "Batch Normalization",
+    "API": "nn.BatchNorm2d",
+    "Configuration": "Spatial (2D)",
+    "Trainable": true,
+    "Parameters": "Scale (γ), Shift (β)"
+  },
+  {
+    "Idx": 14,
+    "OperationName": "LayerNorm",
+    "Description": "Layer Normalization",
+    "API": "nn.LayerNorm",
+    "Configuration": "Last Dimension",
+    "Trainable": true,
+    "Parameters": "Scale (γ), Shift (β)"
+  },
+  {
+    "Idx": 15,
+    "OperationName": "Linear",
+    "Description": "Fully Connected",
+    "API": "nn.Linear",
+    "Configuration": "y=xᵀA+b",
+    "Trainable": true,
+    "Parameters": "Weights Matrix (A), Bias (b)"
+  },
+  {
+    "Idx": 16,
+    "OperationName": "ReLU",
+    "Description": "Rectified Linear Unit",
+    "API": "nn.ReLU",
+    "Configuration": "Inplace=True",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 17,
+    "OperationName": "SiLU",
+    "Description": "Swish Activation",
+    "API": "nn.SiLU",
+    "Configuration": "Inplace=True",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 18,
+    "OperationName": "Sigmoid",
+    "Description": "Probability Activation",
+    "API": "torch.sigmoid",
+    "Configuration": "1 / (1 + e⁻ˣ)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 19,
+    "OperationName": "Concat",
+    "Description": "Channel Concatenation",
+    "API": "torch.cat",
+    "Configuration": "Dim=1",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 20,
+    "OperationName": "Add",
+    "Description": "Element-wise Addition",
+    "API": "torch.add",
+    "Configuration": "Residual Connection",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 21,
+    "OperationName": "Split_Half",
+    "Description": "Channel Splitting",
+    "API": "torch.chunk",
+    "Configuration": "Ratio=0.5",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 22,
+    "OperationName": "Flatten",
+    "Description": "Tensor Flattening",
+    "API": "torch.flatten",
+    "Configuration": "2D → 1D",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 23,
+    "OperationName": "Reshape_Heads",
+    "Description": "Multi-head Reshaping",
+    "API": "view / reshape",
+    "Configuration": "C → (H, D)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 24,
+    "OperationName": "Transpose",
+    "Description": "Dimension Swapping",
+    "API": "transpose",
+    "Configuration": "Dim (-2, -1)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 25,
+    "OperationName": "Gather_TopK",
+    "Description": "Top-K Selection",
+    "API": "torch.gather",
+    "Configuration": "Top-K Indices",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 26,
+    "OperationName": "MatMul",
+    "Description": "Matrix Multiplication",
+    "API": "torch.matmul",
+    "Configuration": "(B, N, M) x (B, M, K)",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 27,
+    "OperationName": "SoftMax",
+    "Description": "SoftMax Normalization",
+    "API": "nn.Softmax",
+    "Configuration": "Dim=1",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 28,
+    "OperationName": "Mul",
+    "Description": "Element-wise Multiplication",
+    "API": "torch.mul",
+    "Configuration": "Broadcast",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 29,
+    "OperationName": "Div",
+    "Description": "Element-wise Division",
+    "API": "torch.div (/)",
+    "Configuration": "Broadcast",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 30,
+    "OperationName": "Sub",
+    "Description": "Element-wise Subtraction",
+    "API": "torch.sub",
+    "Configuration": "Element-wise",
+    "Trainable": false,
+    "Parameters": "-"
+  },
+  {
+    "Idx": 31,
+    "OperationName": "Exp",
+    "Description": "Exponential Operation",
+    "API": "torch.exp",
+    "Configuration": "Element-wise",
+    "Trainable": false,
+    "Parameters": "-"
+  }
+]

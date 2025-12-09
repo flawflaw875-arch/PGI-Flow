@@ -1,0 +1,3351 @@
+{
+  "architecture": "EfficientDet-D0",
+  "total_nodes": 325,
+  "total_edges": 345,
+  "nodes": [
+    {
+      "id": 0,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "Stem_3x3_Conv"
+    },
+    {
+      "id": 1,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "Stem_3x3_BN"
+    },
+    {
+      "id": 2,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "Stem_3x3_SiLU"
+    },
+    {
+      "id": 3,
+      "op_idx": 8,
+      "op_name": "MaxPool_2x2",
+      "annotation": "Stem_Pool"
+    },
+    {
+      "id": 4,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB_Expand_1x1_Conv"
+    },
+    {
+      "id": 5,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB_Expand_1x1_BN"
+    },
+    {
+      "id": 6,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB_Expand_1x1_SiLU"
+    },
+    {
+      "id": 7,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C2_MB_DWConv3x3"
+    },
+    {
+      "id": 8,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB_DWBN"
+    },
+    {
+      "id": 9,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB_DWAct"
+    },
+    {
+      "id": 10,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C2_MB_SE_SE_AvgPool"
+    },
+    {
+      "id": 11,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 12,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB_SE_SE_SiLU"
+    },
+    {
+      "id": 13,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 14,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C2_MB_SE_SE_Sigmoid"
+    },
+    {
+      "id": 15,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C2_MB_SE_SE_Mul"
+    },
+    {
+      "id": 16,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB_Proj_1x1"
+    },
+    {
+      "id": 17,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB_Proj_BN"
+    },
+    {
+      "id": 18,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB2_Expand_1x1_Conv"
+    },
+    {
+      "id": 19,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB2_Expand_1x1_BN"
+    },
+    {
+      "id": 20,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB2_Expand_1x1_SiLU"
+    },
+    {
+      "id": 21,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C2_MB2_DWConv3x3"
+    },
+    {
+      "id": 22,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB2_DWBN"
+    },
+    {
+      "id": 23,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB2_DWAct"
+    },
+    {
+      "id": 24,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C2_MB2_SE_SE_AvgPool"
+    },
+    {
+      "id": 25,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB2_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 26,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C2_MB2_SE_SE_SiLU"
+    },
+    {
+      "id": 27,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB2_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 28,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C2_MB2_SE_SE_Sigmoid"
+    },
+    {
+      "id": 29,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C2_MB2_SE_SE_Mul"
+    },
+    {
+      "id": 30,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C2_MB2_Proj_1x1"
+    },
+    {
+      "id": 31,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C2_MB2_Proj_BN"
+    },
+    {
+      "id": 32,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_Expand_1x1_Conv"
+    },
+    {
+      "id": 33,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_Expand_1x1_BN"
+    },
+    {
+      "id": 34,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_Expand_1x1_SiLU"
+    },
+    {
+      "id": 35,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C3_MB_DWConv3x3"
+    },
+    {
+      "id": 36,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_DWBN"
+    },
+    {
+      "id": 37,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_DWAct"
+    },
+    {
+      "id": 38,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C3_MB_SE_SE_AvgPool"
+    },
+    {
+      "id": 39,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 40,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_SE_SE_SiLU"
+    },
+    {
+      "id": 41,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 42,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C3_MB_SE_SE_Sigmoid"
+    },
+    {
+      "id": 43,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C3_MB_SE_SE_Mul"
+    },
+    {
+      "id": 44,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_Proj_1x1"
+    },
+    {
+      "id": 45,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_Proj_BN"
+    },
+    {
+      "id": 46,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_2_Expand_1x1_Conv"
+    },
+    {
+      "id": 47,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_2_Expand_1x1_BN"
+    },
+    {
+      "id": 48,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_2_Expand_1x1_SiLU"
+    },
+    {
+      "id": 49,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C3_MB_2_DWConv3x3"
+    },
+    {
+      "id": 50,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_2_DWBN"
+    },
+    {
+      "id": 51,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_2_DWAct"
+    },
+    {
+      "id": 52,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C3_MB_2_SE_SE_AvgPool"
+    },
+    {
+      "id": 53,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_2_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 54,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C3_MB_2_SE_SE_SiLU"
+    },
+    {
+      "id": 55,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_2_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 56,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C3_MB_2_SE_SE_Sigmoid"
+    },
+    {
+      "id": 57,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C3_MB_2_SE_SE_Mul"
+    },
+    {
+      "id": 58,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C3_MB_2_Proj_1x1"
+    },
+    {
+      "id": 59,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C3_MB_2_Proj_BN"
+    },
+    {
+      "id": 60,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "C3_MB_2_Add"
+    },
+    {
+      "id": 61,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_Expand_1x1_Conv"
+    },
+    {
+      "id": 62,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_Expand_1x1_BN"
+    },
+    {
+      "id": 63,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_Expand_1x1_SiLU"
+    },
+    {
+      "id": 64,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C4_MB_DWConv3x3"
+    },
+    {
+      "id": 65,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_DWBN"
+    },
+    {
+      "id": 66,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_DWAct"
+    },
+    {
+      "id": 67,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C4_MB_SE_SE_AvgPool"
+    },
+    {
+      "id": 68,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 69,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_SE_SE_SiLU"
+    },
+    {
+      "id": 70,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 71,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C4_MB_SE_SE_Sigmoid"
+    },
+    {
+      "id": 72,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C4_MB_SE_SE_Mul"
+    },
+    {
+      "id": 73,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_Proj_1x1"
+    },
+    {
+      "id": 74,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_Proj_BN"
+    },
+    {
+      "id": 75,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_2_Expand_1x1_Conv"
+    },
+    {
+      "id": 76,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_2_Expand_1x1_BN"
+    },
+    {
+      "id": 77,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_2_Expand_1x1_SiLU"
+    },
+    {
+      "id": 78,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C4_MB_2_DWConv3x3"
+    },
+    {
+      "id": 79,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_2_DWBN"
+    },
+    {
+      "id": 80,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_2_DWAct"
+    },
+    {
+      "id": 81,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C4_MB_2_SE_SE_AvgPool"
+    },
+    {
+      "id": 82,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_2_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 83,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C4_MB_2_SE_SE_SiLU"
+    },
+    {
+      "id": 84,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_2_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 85,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C4_MB_2_SE_SE_Sigmoid"
+    },
+    {
+      "id": 86,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C4_MB_2_SE_SE_Mul"
+    },
+    {
+      "id": 87,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C4_MB_2_Proj_1x1"
+    },
+    {
+      "id": 88,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C4_MB_2_Proj_BN"
+    },
+    {
+      "id": 89,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "C4_MB_2_Add"
+    },
+    {
+      "id": 90,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_Expand_1x1_Conv"
+    },
+    {
+      "id": 91,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_Expand_1x1_BN"
+    },
+    {
+      "id": 92,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_Expand_1x1_SiLU"
+    },
+    {
+      "id": 93,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C5_MB_DWConv3x3"
+    },
+    {
+      "id": 94,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_DWBN"
+    },
+    {
+      "id": 95,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_DWAct"
+    },
+    {
+      "id": 96,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C5_MB_SE_SE_AvgPool"
+    },
+    {
+      "id": 97,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 98,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_SE_SE_SiLU"
+    },
+    {
+      "id": 99,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 100,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C5_MB_SE_SE_Sigmoid"
+    },
+    {
+      "id": 101,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C5_MB_SE_SE_Mul"
+    },
+    {
+      "id": 102,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_Proj_1x1"
+    },
+    {
+      "id": 103,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_Proj_BN"
+    },
+    {
+      "id": 104,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_2_Expand_1x1_Conv"
+    },
+    {
+      "id": 105,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_2_Expand_1x1_BN"
+    },
+    {
+      "id": 106,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_2_Expand_1x1_SiLU"
+    },
+    {
+      "id": 107,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C5_MB_2_DWConv3x3"
+    },
+    {
+      "id": 108,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_2_DWBN"
+    },
+    {
+      "id": 109,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_2_DWAct"
+    },
+    {
+      "id": 110,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C5_MB_2_SE_SE_AvgPool"
+    },
+    {
+      "id": 111,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_2_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 112,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_2_SE_SE_SiLU"
+    },
+    {
+      "id": 113,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_2_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 114,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C5_MB_2_SE_SE_Sigmoid"
+    },
+    {
+      "id": 115,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C5_MB_2_SE_SE_Mul"
+    },
+    {
+      "id": 116,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_2_Proj_1x1"
+    },
+    {
+      "id": 117,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_2_Proj_BN"
+    },
+    {
+      "id": 118,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "C5_MB_2_Add"
+    },
+    {
+      "id": 119,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_3_Expand_1x1_Conv"
+    },
+    {
+      "id": 120,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_3_Expand_1x1_BN"
+    },
+    {
+      "id": 121,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_3_Expand_1x1_SiLU"
+    },
+    {
+      "id": 122,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "C5_MB_3_DWConv3x3"
+    },
+    {
+      "id": 123,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_3_DWBN"
+    },
+    {
+      "id": 124,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_3_DWAct"
+    },
+    {
+      "id": 125,
+      "op_idx": 10,
+      "op_name": "AvgPool_Global",
+      "annotation": "C5_MB_3_SE_SE_AvgPool"
+    },
+    {
+      "id": 126,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_3_SE_SE_Conv_Reduce"
+    },
+    {
+      "id": 127,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "C5_MB_3_SE_SE_SiLU"
+    },
+    {
+      "id": 128,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_3_SE_SE_Conv_Expand"
+    },
+    {
+      "id": 129,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "C5_MB_3_SE_SE_Sigmoid"
+    },
+    {
+      "id": 130,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "C5_MB_3_SE_SE_Mul"
+    },
+    {
+      "id": 131,
+      "op_idx": 0,
+      "op_name": "Conv_1x1",
+      "annotation": "C5_MB_3_Proj_1x1"
+    },
+    {
+      "id": 132,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "C5_MB_3_Proj_BN"
+    },
+    {
+      "id": 133,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "C5_MB_3_Add"
+    },
+    {
+      "id": 134,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P6_Downsample_Conv"
+    },
+    {
+      "id": 135,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Downsample_BN"
+    },
+    {
+      "id": 136,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Downsample_SiLU"
+    },
+    {
+      "id": 137,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P7_Downsample_Conv"
+    },
+    {
+      "id": 138,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Downsample_BN"
+    },
+    {
+      "id": 139,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Downsample_SiLU"
+    },
+    {
+      "id": 140,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "P7_Upsample_TD"
+    },
+    {
+      "id": 141,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P6_TD_Mul1"
+    },
+    {
+      "id": 142,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P6_TD_Mul2"
+    },
+    {
+      "id": 143,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P6_TD_Sum"
+    },
+    {
+      "id": 144,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P6_TD_Normalize"
+    },
+    {
+      "id": 145,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P6_TD_ReLU"
+    },
+    {
+      "id": 146,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P6_TD_DWConv3x3"
+    },
+    {
+      "id": 147,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_TD_DWBN"
+    },
+    {
+      "id": 148,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_TD_SiLU"
+    },
+    {
+      "id": 149,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "P6_Upsample_TD"
+    },
+    {
+      "id": 150,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P5_TD_Mul1"
+    },
+    {
+      "id": 151,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P5_TD_Mul2"
+    },
+    {
+      "id": 152,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P5_TD_Sum"
+    },
+    {
+      "id": 153,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P5_TD_Normalize"
+    },
+    {
+      "id": 154,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P5_TD_ReLU"
+    },
+    {
+      "id": 155,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P5_TD_DWConv3x3"
+    },
+    {
+      "id": 156,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_TD_DWBN"
+    },
+    {
+      "id": 157,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_TD_SiLU"
+    },
+    {
+      "id": 158,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "P5_Upsample_TD"
+    },
+    {
+      "id": 159,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P4_TD_Mul1"
+    },
+    {
+      "id": 160,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P4_TD_Mul2"
+    },
+    {
+      "id": 161,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P4_TD_Sum"
+    },
+    {
+      "id": 162,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P4_TD_Normalize"
+    },
+    {
+      "id": 163,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P4_TD_ReLU"
+    },
+    {
+      "id": 164,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P4_TD_DWConv3x3"
+    },
+    {
+      "id": 165,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_TD_DWBN"
+    },
+    {
+      "id": 166,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_TD_SiLU"
+    },
+    {
+      "id": 167,
+      "op_idx": 11,
+      "op_name": "Upsample_2x",
+      "annotation": "P4_Upsample_TD"
+    },
+    {
+      "id": 168,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P3_Final_Mul1"
+    },
+    {
+      "id": 169,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P3_Final_Mul2"
+    },
+    {
+      "id": 170,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P3_Final_Sum"
+    },
+    {
+      "id": 171,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P3_Final_Normalize"
+    },
+    {
+      "id": 172,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P3_Final_ReLU"
+    },
+    {
+      "id": 173,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P3_Final_DWConv3x3"
+    },
+    {
+      "id": 174,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Final_DWBN"
+    },
+    {
+      "id": 175,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Final_SiLU"
+    },
+    {
+      "id": 176,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P4_Downsample_BU_Conv"
+    },
+    {
+      "id": 177,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Downsample_BU_BN"
+    },
+    {
+      "id": 178,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Downsample_BU_SiLU"
+    },
+    {
+      "id": 179,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P4_BU_Mul1"
+    },
+    {
+      "id": 180,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P4_BU_Mul2"
+    },
+    {
+      "id": 181,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P4_BU_Sum"
+    },
+    {
+      "id": 182,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P4_BU_Normalize"
+    },
+    {
+      "id": 183,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P4_BU_ReLU"
+    },
+    {
+      "id": 184,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P4_BU_DWConv3x3"
+    },
+    {
+      "id": 185,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_BU_DWBN"
+    },
+    {
+      "id": 186,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_BU_SiLU"
+    },
+    {
+      "id": 187,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P5_Downsample_BU_Conv"
+    },
+    {
+      "id": 188,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Downsample_BU_BN"
+    },
+    {
+      "id": 189,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Downsample_BU_SiLU"
+    },
+    {
+      "id": 190,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P5_BU_Mul1"
+    },
+    {
+      "id": 191,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P5_BU_Mul2"
+    },
+    {
+      "id": 192,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P5_BU_Sum"
+    },
+    {
+      "id": 193,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P5_BU_Normalize"
+    },
+    {
+      "id": 194,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P5_BU_ReLU"
+    },
+    {
+      "id": 195,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P5_BU_DWConv3x3"
+    },
+    {
+      "id": 196,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_BU_DWBN"
+    },
+    {
+      "id": 197,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_BU_SiLU"
+    },
+    {
+      "id": 198,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P6_Downsample_BU_Conv"
+    },
+    {
+      "id": 199,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Downsample_BU_BN"
+    },
+    {
+      "id": 200,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Downsample_BU_SiLU"
+    },
+    {
+      "id": 201,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P6_BU_Mul1"
+    },
+    {
+      "id": 202,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P6_BU_Mul2"
+    },
+    {
+      "id": 203,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P6_BU_Sum"
+    },
+    {
+      "id": 204,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P6_BU_Normalize"
+    },
+    {
+      "id": 205,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P6_BU_ReLU"
+    },
+    {
+      "id": 206,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P6_BU_DWConv3x3"
+    },
+    {
+      "id": 207,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_BU_DWBN"
+    },
+    {
+      "id": 208,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_BU_SiLU"
+    },
+    {
+      "id": 209,
+      "op_idx": 2,
+      "op_name": "Conv_3x3_DS",
+      "annotation": "P7_Downsample_BU_Conv"
+    },
+    {
+      "id": 210,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Downsample_BU_BN"
+    },
+    {
+      "id": 211,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Downsample_BU_SiLU"
+    },
+    {
+      "id": 212,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P7_Final_Mul1"
+    },
+    {
+      "id": 213,
+      "op_idx": 28,
+      "op_name": "Mul",
+      "annotation": "P7_Final_Mul2"
+    },
+    {
+      "id": 214,
+      "op_idx": 20,
+      "op_name": "Add",
+      "annotation": "P7_Final_Sum"
+    },
+    {
+      "id": 215,
+      "op_idx": 29,
+      "op_name": "Div",
+      "annotation": "P7_Final_Normalize"
+    },
+    {
+      "id": 216,
+      "op_idx": 16,
+      "op_name": "ReLU",
+      "annotation": "P7_Final_ReLU"
+    },
+    {
+      "id": 217,
+      "op_idx": 5,
+      "op_name": "DWConv_3x3",
+      "annotation": "P7_Final_DWConv3x3"
+    },
+    {
+      "id": 218,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Final_DWBN"
+    },
+    {
+      "id": 219,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Final_SiLU"
+    },
+    {
+      "id": 220,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Cls_Subnet_1_Conv"
+    },
+    {
+      "id": 221,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Cls_Subnet_1_BN"
+    },
+    {
+      "id": 222,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Cls_Subnet_1_SiLU"
+    },
+    {
+      "id": 223,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Cls_Subnet_2_Conv"
+    },
+    {
+      "id": 224,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Cls_Subnet_2_BN"
+    },
+    {
+      "id": 225,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Cls_Subnet_2_SiLU"
+    },
+    {
+      "id": 226,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Cls_Subnet_3_Conv"
+    },
+    {
+      "id": 227,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Cls_Subnet_3_BN"
+    },
+    {
+      "id": 228,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Cls_Subnet_3_SiLU"
+    },
+    {
+      "id": 229,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Cls_Final_Conv"
+    },
+    {
+      "id": 230,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "P3_Cls_Sigmoid"
+    },
+    {
+      "id": 231,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Reg_Subnet_1_Conv"
+    },
+    {
+      "id": 232,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Reg_Subnet_1_BN"
+    },
+    {
+      "id": 233,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Reg_Subnet_1_SiLU"
+    },
+    {
+      "id": 234,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Reg_Subnet_2_Conv"
+    },
+    {
+      "id": 235,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Reg_Subnet_2_BN"
+    },
+    {
+      "id": 236,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Reg_Subnet_2_SiLU"
+    },
+    {
+      "id": 237,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Reg_Subnet_3_Conv"
+    },
+    {
+      "id": 238,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P3_Reg_Subnet_3_BN"
+    },
+    {
+      "id": 239,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P3_Reg_Subnet_3_SiLU"
+    },
+    {
+      "id": 240,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P3_Reg_Final_Conv"
+    },
+    {
+      "id": 241,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Cls_Subnet_1_Conv"
+    },
+    {
+      "id": 242,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Cls_Subnet_1_BN"
+    },
+    {
+      "id": 243,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Cls_Subnet_1_SiLU"
+    },
+    {
+      "id": 244,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Cls_Subnet_2_Conv"
+    },
+    {
+      "id": 245,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Cls_Subnet_2_BN"
+    },
+    {
+      "id": 246,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Cls_Subnet_2_SiLU"
+    },
+    {
+      "id": 247,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Cls_Subnet_3_Conv"
+    },
+    {
+      "id": 248,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Cls_Subnet_3_BN"
+    },
+    {
+      "id": 249,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Cls_Subnet_3_SiLU"
+    },
+    {
+      "id": 250,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Cls_Final_Conv"
+    },
+    {
+      "id": 251,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "P4_Cls_Sigmoid"
+    },
+    {
+      "id": 252,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Reg_Subnet_1_Conv"
+    },
+    {
+      "id": 253,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Reg_Subnet_1_BN"
+    },
+    {
+      "id": 254,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Reg_Subnet_1_SiLU"
+    },
+    {
+      "id": 255,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Reg_Subnet_2_Conv"
+    },
+    {
+      "id": 256,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Reg_Subnet_2_BN"
+    },
+    {
+      "id": 257,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Reg_Subnet_2_SiLU"
+    },
+    {
+      "id": 258,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Reg_Subnet_3_Conv"
+    },
+    {
+      "id": 259,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P4_Reg_Subnet_3_BN"
+    },
+    {
+      "id": 260,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P4_Reg_Subnet_3_SiLU"
+    },
+    {
+      "id": 261,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P4_Reg_Final_Conv"
+    },
+    {
+      "id": 262,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Cls_Subnet_1_Conv"
+    },
+    {
+      "id": 263,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Cls_Subnet_1_BN"
+    },
+    {
+      "id": 264,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Cls_Subnet_1_SiLU"
+    },
+    {
+      "id": 265,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Cls_Subnet_2_Conv"
+    },
+    {
+      "id": 266,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Cls_Subnet_2_BN"
+    },
+    {
+      "id": 267,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Cls_Subnet_2_SiLU"
+    },
+    {
+      "id": 268,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Cls_Subnet_3_Conv"
+    },
+    {
+      "id": 269,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Cls_Subnet_3_BN"
+    },
+    {
+      "id": 270,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Cls_Subnet_3_SiLU"
+    },
+    {
+      "id": 271,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Cls_Final_Conv"
+    },
+    {
+      "id": 272,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "P5_Cls_Sigmoid"
+    },
+    {
+      "id": 273,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Reg_Subnet_1_Conv"
+    },
+    {
+      "id": 274,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Reg_Subnet_1_BN"
+    },
+    {
+      "id": 275,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Reg_Subnet_1_SiLU"
+    },
+    {
+      "id": 276,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Reg_Subnet_2_Conv"
+    },
+    {
+      "id": 277,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Reg_Subnet_2_BN"
+    },
+    {
+      "id": 278,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Reg_Subnet_2_SiLU"
+    },
+    {
+      "id": 279,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Reg_Subnet_3_Conv"
+    },
+    {
+      "id": 280,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P5_Reg_Subnet_3_BN"
+    },
+    {
+      "id": 281,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P5_Reg_Subnet_3_SiLU"
+    },
+    {
+      "id": 282,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P5_Reg_Final_Conv"
+    },
+    {
+      "id": 283,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Cls_Subnet_1_Conv"
+    },
+    {
+      "id": 284,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Cls_Subnet_1_BN"
+    },
+    {
+      "id": 285,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Cls_Subnet_1_SiLU"
+    },
+    {
+      "id": 286,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Cls_Subnet_2_Conv"
+    },
+    {
+      "id": 287,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Cls_Subnet_2_BN"
+    },
+    {
+      "id": 288,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Cls_Subnet_2_SiLU"
+    },
+    {
+      "id": 289,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Cls_Subnet_3_Conv"
+    },
+    {
+      "id": 290,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Cls_Subnet_3_BN"
+    },
+    {
+      "id": 291,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Cls_Subnet_3_SiLU"
+    },
+    {
+      "id": 292,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Cls_Final_Conv"
+    },
+    {
+      "id": 293,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "P6_Cls_Sigmoid"
+    },
+    {
+      "id": 294,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Reg_Subnet_1_Conv"
+    },
+    {
+      "id": 295,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Reg_Subnet_1_BN"
+    },
+    {
+      "id": 296,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Reg_Subnet_1_SiLU"
+    },
+    {
+      "id": 297,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Reg_Subnet_2_Conv"
+    },
+    {
+      "id": 298,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Reg_Subnet_2_BN"
+    },
+    {
+      "id": 299,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Reg_Subnet_2_SiLU"
+    },
+    {
+      "id": 300,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Reg_Subnet_3_Conv"
+    },
+    {
+      "id": 301,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P6_Reg_Subnet_3_BN"
+    },
+    {
+      "id": 302,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P6_Reg_Subnet_3_SiLU"
+    },
+    {
+      "id": 303,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P6_Reg_Final_Conv"
+    },
+    {
+      "id": 304,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Cls_Subnet_1_Conv"
+    },
+    {
+      "id": 305,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Cls_Subnet_1_BN"
+    },
+    {
+      "id": 306,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Cls_Subnet_1_SiLU"
+    },
+    {
+      "id": 307,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Cls_Subnet_2_Conv"
+    },
+    {
+      "id": 308,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Cls_Subnet_2_BN"
+    },
+    {
+      "id": 309,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Cls_Subnet_2_SiLU"
+    },
+    {
+      "id": 310,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Cls_Subnet_3_Conv"
+    },
+    {
+      "id": 311,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Cls_Subnet_3_BN"
+    },
+    {
+      "id": 312,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Cls_Subnet_3_SiLU"
+    },
+    {
+      "id": 313,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Cls_Final_Conv"
+    },
+    {
+      "id": 314,
+      "op_idx": 18,
+      "op_name": "Sigmoid",
+      "annotation": "P7_Cls_Sigmoid"
+    },
+    {
+      "id": 315,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Reg_Subnet_1_Conv"
+    },
+    {
+      "id": 316,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Reg_Subnet_1_BN"
+    },
+    {
+      "id": 317,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Reg_Subnet_1_SiLU"
+    },
+    {
+      "id": 318,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Reg_Subnet_2_Conv"
+    },
+    {
+      "id": 319,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Reg_Subnet_2_BN"
+    },
+    {
+      "id": 320,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Reg_Subnet_2_SiLU"
+    },
+    {
+      "id": 321,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Reg_Subnet_3_Conv"
+    },
+    {
+      "id": 322,
+      "op_idx": 13,
+      "op_name": "BatchNorm",
+      "annotation": "P7_Reg_Subnet_3_BN"
+    },
+    {
+      "id": 323,
+      "op_idx": 17,
+      "op_name": "SiLU",
+      "annotation": "P7_Reg_Subnet_3_SiLU"
+    },
+    {
+      "id": 324,
+      "op_idx": 1,
+      "op_name": "Conv_3x3",
+      "annotation": "P7_Reg_Final_Conv"
+    }
+  ],
+  "edges": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      9,
+      15
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      18,
+      19
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      21,
+      22
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      23,
+      24
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      25,
+      26
+    ],
+    [
+      26,
+      27
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      23,
+      29
+    ],
+    [
+      28,
+      29
+    ],
+    [
+      29,
+      30
+    ],
+    [
+      30,
+      31
+    ],
+    [
+      31,
+      32
+    ],
+    [
+      32,
+      33
+    ],
+    [
+      33,
+      34
+    ],
+    [
+      34,
+      35
+    ],
+    [
+      35,
+      36
+    ],
+    [
+      36,
+      37
+    ],
+    [
+      37,
+      38
+    ],
+    [
+      38,
+      39
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      40,
+      41
+    ],
+    [
+      41,
+      42
+    ],
+    [
+      37,
+      43
+    ],
+    [
+      42,
+      43
+    ],
+    [
+      43,
+      44
+    ],
+    [
+      44,
+      45
+    ],
+    [
+      45,
+      46
+    ],
+    [
+      46,
+      47
+    ],
+    [
+      47,
+      48
+    ],
+    [
+      48,
+      49
+    ],
+    [
+      49,
+      50
+    ],
+    [
+      50,
+      51
+    ],
+    [
+      51,
+      52
+    ],
+    [
+      52,
+      53
+    ],
+    [
+      53,
+      54
+    ],
+    [
+      54,
+      55
+    ],
+    [
+      55,
+      56
+    ],
+    [
+      51,
+      57
+    ],
+    [
+      56,
+      57
+    ],
+    [
+      57,
+      58
+    ],
+    [
+      58,
+      59
+    ],
+    [
+      45,
+      60
+    ],
+    [
+      59,
+      60
+    ],
+    [
+      60,
+      61
+    ],
+    [
+      61,
+      62
+    ],
+    [
+      62,
+      63
+    ],
+    [
+      63,
+      64
+    ],
+    [
+      64,
+      65
+    ],
+    [
+      65,
+      66
+    ],
+    [
+      66,
+      67
+    ],
+    [
+      67,
+      68
+    ],
+    [
+      68,
+      69
+    ],
+    [
+      69,
+      70
+    ],
+    [
+      70,
+      71
+    ],
+    [
+      66,
+      72
+    ],
+    [
+      71,
+      72
+    ],
+    [
+      72,
+      73
+    ],
+    [
+      73,
+      74
+    ],
+    [
+      74,
+      75
+    ],
+    [
+      75,
+      76
+    ],
+    [
+      76,
+      77
+    ],
+    [
+      77,
+      78
+    ],
+    [
+      78,
+      79
+    ],
+    [
+      79,
+      80
+    ],
+    [
+      80,
+      81
+    ],
+    [
+      81,
+      82
+    ],
+    [
+      82,
+      83
+    ],
+    [
+      83,
+      84
+    ],
+    [
+      84,
+      85
+    ],
+    [
+      80,
+      86
+    ],
+    [
+      85,
+      86
+    ],
+    [
+      86,
+      87
+    ],
+    [
+      87,
+      88
+    ],
+    [
+      74,
+      89
+    ],
+    [
+      88,
+      89
+    ],
+    [
+      89,
+      90
+    ],
+    [
+      90,
+      91
+    ],
+    [
+      91,
+      92
+    ],
+    [
+      92,
+      93
+    ],
+    [
+      93,
+      94
+    ],
+    [
+      94,
+      95
+    ],
+    [
+      95,
+      96
+    ],
+    [
+      96,
+      97
+    ],
+    [
+      97,
+      98
+    ],
+    [
+      98,
+      99
+    ],
+    [
+      99,
+      100
+    ],
+    [
+      95,
+      101
+    ],
+    [
+      100,
+      101
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      102,
+      103
+    ],
+    [
+      103,
+      104
+    ],
+    [
+      104,
+      105
+    ],
+    [
+      105,
+      106
+    ],
+    [
+      106,
+      107
+    ],
+    [
+      107,
+      108
+    ],
+    [
+      108,
+      109
+    ],
+    [
+      109,
+      110
+    ],
+    [
+      110,
+      111
+    ],
+    [
+      111,
+      112
+    ],
+    [
+      112,
+      113
+    ],
+    [
+      113,
+      114
+    ],
+    [
+      109,
+      115
+    ],
+    [
+      114,
+      115
+    ],
+    [
+      115,
+      116
+    ],
+    [
+      116,
+      117
+    ],
+    [
+      103,
+      118
+    ],
+    [
+      117,
+      118
+    ],
+    [
+      118,
+      119
+    ],
+    [
+      119,
+      120
+    ],
+    [
+      120,
+      121
+    ],
+    [
+      121,
+      122
+    ],
+    [
+      122,
+      123
+    ],
+    [
+      123,
+      124
+    ],
+    [
+      124,
+      125
+    ],
+    [
+      125,
+      126
+    ],
+    [
+      126,
+      127
+    ],
+    [
+      127,
+      128
+    ],
+    [
+      128,
+      129
+    ],
+    [
+      124,
+      130
+    ],
+    [
+      129,
+      130
+    ],
+    [
+      130,
+      131
+    ],
+    [
+      131,
+      132
+    ],
+    [
+      118,
+      133
+    ],
+    [
+      132,
+      133
+    ],
+    [
+      133,
+      134
+    ],
+    [
+      134,
+      135
+    ],
+    [
+      135,
+      136
+    ],
+    [
+      136,
+      137
+    ],
+    [
+      137,
+      138
+    ],
+    [
+      138,
+      139
+    ],
+    [
+      139,
+      140
+    ],
+    [
+      136,
+      141
+    ],
+    [
+      140,
+      142
+    ],
+    [
+      141,
+      143
+    ],
+    [
+      142,
+      143
+    ],
+    [
+      143,
+      144
+    ],
+    [
+      144,
+      145
+    ],
+    [
+      145,
+      146
+    ],
+    [
+      146,
+      147
+    ],
+    [
+      147,
+      148
+    ],
+    [
+      148,
+      149
+    ],
+    [
+      133,
+      150
+    ],
+    [
+      149,
+      151
+    ],
+    [
+      150,
+      152
+    ],
+    [
+      151,
+      152
+    ],
+    [
+      152,
+      153
+    ],
+    [
+      153,
+      154
+    ],
+    [
+      154,
+      155
+    ],
+    [
+      155,
+      156
+    ],
+    [
+      156,
+      157
+    ],
+    [
+      157,
+      158
+    ],
+    [
+      89,
+      159
+    ],
+    [
+      158,
+      160
+    ],
+    [
+      159,
+      161
+    ],
+    [
+      160,
+      161
+    ],
+    [
+      161,
+      162
+    ],
+    [
+      162,
+      163
+    ],
+    [
+      163,
+      164
+    ],
+    [
+      164,
+      165
+    ],
+    [
+      165,
+      166
+    ],
+    [
+      166,
+      167
+    ],
+    [
+      60,
+      168
+    ],
+    [
+      167,
+      169
+    ],
+    [
+      168,
+      170
+    ],
+    [
+      169,
+      170
+    ],
+    [
+      170,
+      171
+    ],
+    [
+      171,
+      172
+    ],
+    [
+      172,
+      173
+    ],
+    [
+      173,
+      174
+    ],
+    [
+      174,
+      175
+    ],
+    [
+      175,
+      176
+    ],
+    [
+      176,
+      177
+    ],
+    [
+      177,
+      178
+    ],
+    [
+      89,
+      179
+    ],
+    [
+      166,
+      180
+    ],
+    [
+      179,
+      181
+    ],
+    [
+      180,
+      181
+    ],
+    [
+      181,
+      182
+    ],
+    [
+      182,
+      183
+    ],
+    [
+      183,
+      184
+    ],
+    [
+      184,
+      185
+    ],
+    [
+      185,
+      186
+    ],
+    [
+      186,
+      187
+    ],
+    [
+      187,
+      188
+    ],
+    [
+      188,
+      189
+    ],
+    [
+      133,
+      190
+    ],
+    [
+      157,
+      191
+    ],
+    [
+      190,
+      192
+    ],
+    [
+      191,
+      192
+    ],
+    [
+      192,
+      193
+    ],
+    [
+      193,
+      194
+    ],
+    [
+      194,
+      195
+    ],
+    [
+      195,
+      196
+    ],
+    [
+      196,
+      197
+    ],
+    [
+      197,
+      198
+    ],
+    [
+      198,
+      199
+    ],
+    [
+      199,
+      200
+    ],
+    [
+      136,
+      201
+    ],
+    [
+      148,
+      202
+    ],
+    [
+      201,
+      203
+    ],
+    [
+      202,
+      203
+    ],
+    [
+      203,
+      204
+    ],
+    [
+      204,
+      205
+    ],
+    [
+      205,
+      206
+    ],
+    [
+      206,
+      207
+    ],
+    [
+      207,
+      208
+    ],
+    [
+      208,
+      209
+    ],
+    [
+      209,
+      210
+    ],
+    [
+      210,
+      211
+    ],
+    [
+      139,
+      212
+    ],
+    [
+      211,
+      213
+    ],
+    [
+      212,
+      214
+    ],
+    [
+      213,
+      214
+    ],
+    [
+      214,
+      215
+    ],
+    [
+      215,
+      216
+    ],
+    [
+      216,
+      217
+    ],
+    [
+      217,
+      218
+    ],
+    [
+      218,
+      219
+    ],
+    [
+      175,
+      220
+    ],
+    [
+      220,
+      221
+    ],
+    [
+      221,
+      222
+    ],
+    [
+      222,
+      223
+    ],
+    [
+      223,
+      224
+    ],
+    [
+      224,
+      225
+    ],
+    [
+      225,
+      226
+    ],
+    [
+      226,
+      227
+    ],
+    [
+      227,
+      228
+    ],
+    [
+      228,
+      229
+    ],
+    [
+      229,
+      230
+    ],
+    [
+      175,
+      231
+    ],
+    [
+      231,
+      232
+    ],
+    [
+      232,
+      233
+    ],
+    [
+      233,
+      234
+    ],
+    [
+      234,
+      235
+    ],
+    [
+      235,
+      236
+    ],
+    [
+      236,
+      237
+    ],
+    [
+      237,
+      238
+    ],
+    [
+      238,
+      239
+    ],
+    [
+      239,
+      240
+    ],
+    [
+      186,
+      241
+    ],
+    [
+      241,
+      242
+    ],
+    [
+      242,
+      243
+    ],
+    [
+      243,
+      244
+    ],
+    [
+      244,
+      245
+    ],
+    [
+      245,
+      246
+    ],
+    [
+      246,
+      247
+    ],
+    [
+      247,
+      248
+    ],
+    [
+      248,
+      249
+    ],
+    [
+      249,
+      250
+    ],
+    [
+      250,
+      251
+    ],
+    [
+      186,
+      252
+    ],
+    [
+      252,
+      253
+    ],
+    [
+      253,
+      254
+    ],
+    [
+      254,
+      255
+    ],
+    [
+      255,
+      256
+    ],
+    [
+      256,
+      257
+    ],
+    [
+      257,
+      258
+    ],
+    [
+      258,
+      259
+    ],
+    [
+      259,
+      260
+    ],
+    [
+      260,
+      261
+    ],
+    [
+      197,
+      262
+    ],
+    [
+      262,
+      263
+    ],
+    [
+      263,
+      264
+    ],
+    [
+      264,
+      265
+    ],
+    [
+      265,
+      266
+    ],
+    [
+      266,
+      267
+    ],
+    [
+      267,
+      268
+    ],
+    [
+      268,
+      269
+    ],
+    [
+      269,
+      270
+    ],
+    [
+      270,
+      271
+    ],
+    [
+      271,
+      272
+    ],
+    [
+      197,
+      273
+    ],
+    [
+      273,
+      274
+    ],
+    [
+      274,
+      275
+    ],
+    [
+      275,
+      276
+    ],
+    [
+      276,
+      277
+    ],
+    [
+      277,
+      278
+    ],
+    [
+      278,
+      279
+    ],
+    [
+      279,
+      280
+    ],
+    [
+      280,
+      281
+    ],
+    [
+      281,
+      282
+    ],
+    [
+      208,
+      283
+    ],
+    [
+      283,
+      284
+    ],
+    [
+      284,
+      285
+    ],
+    [
+      285,
+      286
+    ],
+    [
+      286,
+      287
+    ],
+    [
+      287,
+      288
+    ],
+    [
+      288,
+      289
+    ],
+    [
+      289,
+      290
+    ],
+    [
+      290,
+      291
+    ],
+    [
+      291,
+      292
+    ],
+    [
+      292,
+      293
+    ],
+    [
+      208,
+      294
+    ],
+    [
+      294,
+      295
+    ],
+    [
+      295,
+      296
+    ],
+    [
+      296,
+      297
+    ],
+    [
+      297,
+      298
+    ],
+    [
+      298,
+      299
+    ],
+    [
+      299,
+      300
+    ],
+    [
+      300,
+      301
+    ],
+    [
+      301,
+      302
+    ],
+    [
+      302,
+      303
+    ],
+    [
+      219,
+      304
+    ],
+    [
+      304,
+      305
+    ],
+    [
+      305,
+      306
+    ],
+    [
+      306,
+      307
+    ],
+    [
+      307,
+      308
+    ],
+    [
+      308,
+      309
+    ],
+    [
+      309,
+      310
+    ],
+    [
+      310,
+      311
+    ],
+    [
+      311,
+      312
+    ],
+    [
+      312,
+      313
+    ],
+    [
+      313,
+      314
+    ],
+    [
+      219,
+      315
+    ],
+    [
+      315,
+      316
+    ],
+    [
+      316,
+      317
+    ],
+    [
+      317,
+      318
+    ],
+    [
+      318,
+      319
+    ],
+    [
+      319,
+      320
+    ],
+    [
+      320,
+      321
+    ],
+    [
+      321,
+      322
+    ],
+    [
+      322,
+      323
+    ],
+    [
+      323,
+      324
+    ]
+  ],
+  "final_output_ids": [
+    230,
+    240,
+    251,
+    261,
+    272,
+    282,
+    293,
+    303,
+    314,
+    324
+  ]
+}

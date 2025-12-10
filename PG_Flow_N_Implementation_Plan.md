@@ -6,43 +6,43 @@ _Norm-based Parameter-Gated Flow Surrogate_
 
 목표:
 
-> 훈련된 모델 \(M\) (예: YOLO/DETR/Faster R-CNN 등)에 대해  
+> 훈련된 모델 $(M)$ (예: YOLO/DETR/Faster R-CNN 등)에 대해  
 > **아키텍처 DAG + weight 기반 gate**를 사용하는  
-> **parameter-gated flow surrogate** \(s(M)\) 계산 모듈을 구현한다.
+> **parameter-gated flow surrogate** $(s(M))$ 계산 모듈을 구현한다.
 
 PG-Flow의 전제:
 
-- **weight를 이용하여 gate \(g_i\)**를 구성한다.
+- **weight를 이용하여 gate $(g_i)$**를 구성한다.
 - gate는 **G¹/G²/G³ 타입 중 하나**, **gating 패턴은 outgoing / incoming 중 하나**를 선택한다.
 
 ---
 
 ## 0. 전체 아키텍처 개요
 
-구현하고자 하는 구성 요소는 다음 5개다.
+구현하고자 하는 구성 요소는 다음 4개다.
 
 1. **그래프 빌더** (`./object_detection/models/code`)  
    → object detetction 모델 아키텍처 → Neaural architecture graph(`nodes featrure(X)`, `edges(E)`, `Operator(O)`)
 
 2. **웨이트 추출기** (`weight_extractor.py`)  
-   → 각 노드(Node)에 대해 effective weight \(W_i\) 추출
+   → 각 노드(Node)에 대해 effective weight $(W_i)$ 추출
 
 3. **Flow 시뮬레이터** (`Flow_Surrogate_Generator.py`)  
    * type of Parameter-Gate
-   → \(W_i\)들로부터 대표값 \(e_i\) 계산  
-   → z-score → gate \(g_i\)  
+   → $(W_i)$들로부터 대표값 $(e_i)$ 계산  
+   → z-score → gate $(g_i)$  
    → **Gate 타입 G¹/G²/G³ 중 선택 가능**
    * Gating pattern
    → DAG와 gate를 이용해 imformation flow를 흘림  
    → **gating 패턴(Outgoing / Incoming)을 선택해서 적용** 
 
 4. **Surrogate 계산 래퍼**  
-   → `model`을 받아 위 1–3단계를 호출해 \(s(M)\) 반환
+   → `model`을 받아 위 1–3단계를 호출해 $(s(M))$ 반환
 
 + 실험 스크립트:
 
 - `experiments/compute_surrogates.py`  
-  → 여러 모델에 대해 s′ 일괄 계산
+  → 여러 모델에 대해 s 일괄 계산
 
 ---
 
@@ -105,7 +105,7 @@ project_root/
 
 역할:
 
-- Node가 가리키는 모듈에서 **effective weight** \(W_i\)를 가져온다.
+- Node가 가리키는 모듈에서 **effective weight** $(W_i)$를 가져온다.
 
 1차 버전:
 
@@ -132,7 +132,7 @@ project_root/
 
 ### 4.0 Gate 설계 원칙
 
-- gate는 **오직 weight \(W\)** 만 사용
+- gate는 **오직 weight $(W)$** 만 사용
 - Gate(W)는 다음을 만족:
   - (1) **상대적 크기**만 사용 → z-score  
   - (2) 값 범위 **[1−β, 1+β]** → flow가 터지거나 0으로 죽지 않게  
@@ -161,22 +161,22 @@ s_prime = compute_pgflow_surrogate(
 **한 줄 요약:**  
 > “평균보다 weight 에너지가 큰 모듈은 gate ↑, 작은 모듈은 gate ↓”
 
-1. 대표값 \(e_i\)  
-   \[
-   e_i = \log\left( rac{\|W_i\|_F}{\sqrt{|	heta_i|}} + arepsilon 
+1. 대표값 $(e_i)$  
+   $[
+   e_i = $log$left( rac{$|W_i$|_F}{$sqrt{|	heta_i|}} + arepsilon 
 ight)
-   \]
+   $]
 
 2. z-score  
-   \[
-   \hat e_i = rac{e_i - \mu_e}{\sigma_e}
-   \]
+   $[
+   $hat e_i = rac{e_i - $mu_e}{$sigma_e}
+   $]
 
 3. gate  
-   \[
-   g_i = 1 + eta 	anh(\lambda \hat e_i)
-   \]  
-   - 예: \(eta = 0.2,\ \lambda = 1.0\)
+   $[
+   g_i = 1 + eta 	anh($lambda $hat e_i)
+   $]  
+   - 예: $(eta = 0.2,$ $lambda = 1.0)$
 
 **구현 함수**
 
@@ -192,16 +192,16 @@ ight)
 > “입력 채널/커널 크기까지 고려해서, **입력 대비 얼마나 크게 학습됐는지** 본다”
 
 1. Conv weight 형상:  
-   \(W_i \in \mathbb{R}^{C_{out}	imes C_{in}	imes k 	imes k}\)
+   $(W_i $in $mathbb{R}^{C_{out}	imes C_{in}	imes k 	imes k})$
 
 2. fan-in:  
-   \(	ext{fan\_in}_i = C_{in} \cdot k^2\)
+   $(	ext{fan$_in}_i = C_{in} $cdot k^2)$
 
 3. 대표값:  
-   \[
-   e_i = \log\left( rac{\|W_i\|_F}{\sqrt{	ext{fan\_in}_i}} + arepsilon 
+   $[
+   e_i = $log$left( rac{$|W_i$|_F}{$sqrt{	ext{fan$_in}_i}} + arepsilon 
 ight)
-   \]
+   $]
 
 4. 이후 z-score, gate는 G¹과 동일
 
@@ -219,23 +219,23 @@ ight)
 > “norm이 커도 대부분 0이면 낮게 보고, dense하게 살아 있는 레이어를 강조”
 
 1. norm term (G¹):  
-   \[
-   e_i^{(N)} = \log\left( rac{\|W_i\|_F}{\sqrt{|	heta_i|}} + arepsilon 
+   $[
+   e_i^{(N)} = $log$left( rac{$|W_i$|_F}{$sqrt{|	heta_i|}} + arepsilon 
 ight)
-   \]
+   $]
 
 2. sparsity term:  
-   \[
-   s_i = rac{1}{|	heta_i|} \sum_{	heta \in i} \mathbf{1}(|	heta| < 	au)
-   \]  
-   - \(	au pprox 10^{-3}\)  
-   - \(s_i \in [0,1]\)
+   $[
+   s_i = rac{1}{|	heta_i|} $sum_{	heta $in i} $mathbf{1}(|	heta| < 	au)
+   $]  
+   - $(	au pprox 10^{-3})$  
+   - $(s_i $in [0,1])$
 
 3. 합성 대표값:  
-   \[
-   e_i = e_i^{(N)} - \gamma s_i
-   \]  
-   - \(\gamma > 0\) (예: 0.5)
+   $[
+   e_i = e_i^{(N)} - $gamma s_i
+   $]  
+   - $($gamma > 0)$ (예: 0.5)
 
 4. 이후 z-score, gate는 동일
 
@@ -248,7 +248,7 @@ ight)
 
 ## 5. Gate 적용 패턴 (Layer 2) – `flow_simulator.py`
 
-Gate 값 \(g_i\) (G¹~G³ 중 하나로 계산)가 준비되면,  
+Gate 값 $(g_i)$ (G¹~G³ 중 하나로 계산)가 준비되면,  
 이제 **flow 안에서 어디에 곱할지**를 결정한다.  
 이 선택은 `gating_pattern`으로 컨트롤한다.
 
@@ -274,9 +274,9 @@ s_prime = simulate_pgflow(
 
 메시지 합산:
 
-\[
-m_i = \sum_{j \in \mathcal{N}_	ext{in}(i)} g_j f_j
-\]
+$[
+m_i = $sum_{j $in $mathcal{N}_	ext{in}(i)} g_j f_j
+$]
 
 - 해석: **보내는 쪽(j)이 얼마나 크게 말하는지**를 gate로 반영
 
@@ -284,9 +284,9 @@ m_i = \sum_{j \in \mathcal{N}_	ext{in}(i)} g_j f_j
 
 메시지 합산:
 
-\[
-m_i = g_i \cdot \sum_{j} f_j
-\]
+$[
+m_i = g_i $cdot $sum_{j} f_j
+$]
 
 - 해석: **받는 쪽(i)이 upstream 정보를 얼마나 받아들일지**를 gate로 반영
 
@@ -303,7 +303,7 @@ m_i = g_i \cdot \sum_{j} f_j
      - `"outgoing"`: `msgs = f_j * g_j`, sum  
      - `"incoming"`: `sum(f_j)` 후 `* g_i`
 7. input 노드들의 메시지 sum → `s_prime`  
-8. \(s(M) = s_	ext{prime} / (\|s_	ext{prime}\| + arepsilon)\)
+8. $(s(M) = s_	ext{prime} / ($|s_	ext{prime}$| + arepsilon))$
 
 **액션 아이템**
 

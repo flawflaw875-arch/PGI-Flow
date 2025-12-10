@@ -279,9 +279,9 @@ s_prime = compute_pgflow_surrogate(
 
 | 단계 | 수식 (Formula) | 설명 |
 | :--- | :--- | :--- |
-| **1. Fan-in 계산** | $\text{fan\_in}_i = C_{in} \cdot k^2$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
-| **2. 대표값 ($e_i$)** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\text{fan\_in}_i}} + \epsilon \right)$ | $\|\theta_i\|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
-| **3. 이후 단계** | $G^1$과 동일 (Z-score $\rightarrow$ Gate) | |
+| **1. Fan-in** | $\text{fan\_in}_i = C_{in} \cdot k^2$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
+| **2. 대표값** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\text{fan\_in}_i}} + \epsilon \right)$ | $\|\theta_i\|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
+| **3. 이후** | $G^1$과 동일 (Z-score → Gate) | |
 
 **🛠 구현 함수 매핑**
 * `compute_node_stats_scale_norm(nodes)` → $\{node_{id}: e_i\}$
@@ -343,8 +343,8 @@ s_prime = simulate_pgflow(
 
 | 패턴 | 코드명 | 수식 | 해석 |
 | :--- | :--- | :--- | :--- |
-| **P¹: Outgoing** | `"outgoing"` | $m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$ | **보내는 쪽($j$)**이 얼마나 크게 말하는지를 Gate로 반영 |
-| **P²: Incoming** | `"incoming"` | $m_i = g_i \cdot \sum_{j} f_j$ | **받는 쪽($i$)**이 정보를 얼마나 받아들일지를 Gate로 반영 |
+| **P¹: Outgoing** | `"outgoing"` | $m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$ | **보내는 쪽**($j$)이 얼마나 크게 말하는지를 Gate로 반영 |
+| **P²: Incoming** | `"incoming"` | $m_i = g_i \cdot \sum_{j} f_j$ | **받는 쪽**($i$)이 정보를 얼마나 받아들일지를 Gate로 반영 |
 
 ### 5.3 Flow 구현 절차
 
@@ -353,8 +353,8 @@ s_prime = simulate_pgflow(
 3. **초기화:** Input 노드에 `torch.randn` 초기 메시지 할당
 4. **위상 정렬:** `topological_sort(num_nodes, edges_idx)` 수행
 5. **순회 및 계산:**
-   - **Outgoing:** `msgs = f_j * g_j` 후 Sum
-   - **Incoming:** `sum(f_j)` 후 `* g_i`
+   - **Outgoing:** $msgs = f_j \cdot g_j$ 후 Sum
+   - **Incoming:** $\sum(f_j)$ 후 $\cdot g_i$
 6. **최종 산출:** Input 노드 메시지 합산 및 정규화
 
 $$s(M) = \frac{s_{\text{prime}}}{\|s_{\text{prime}}\| + \epsilon}$$

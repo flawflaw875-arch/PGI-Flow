@@ -1,4 +1,4 @@
-# PG-Flow
+# PG-Flow Surrogates
 Predicting Object Detection Transferability via Parameter-Gated Flow Surrogates
 
 ## 1. Research Background and Problem Definition

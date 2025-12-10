@@ -353,8 +353,8 @@ s_prime = simulate_pgflow(
 3. **초기화:** Input 노드에 `torch.randn` 초기 메시지 할당
 4. **위상 정렬:** `topological_sort(num_nodes, edges_idx)` 수행
 5. **순회 및 계산:**
-   - **Outgoing:** `msgs = $(f_j)$ * $(g_j)$` 후 Sum
-   - **Incoming:** `sum($f_j$)` 후 `* $(g_i)$`
+   - **Outgoing:** `msgs = f_j * g_j` 후 Sum
+   - **Incoming:** `sum(f_j)` 후 `* g_i`
 6. **최종 산출:** Input 노드 메시지 합산 및 정규화
 
 $$s(M) = \frac{s_{\text{prime}}}{\|s_{\text{prime}}\| + \epsilon}$$

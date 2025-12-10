@@ -1,19 +1,18 @@
-# PG-Flow-N Implementation Plan
+# PG-Flow Implementation Plan
 _Norm-based Parameter-Gated Flow Surrogate_
 
-이 문서는 **PG-Flow-N** 방법론(데이터 비의존, weight-only gate)을 실제 코드로 구현하기 위한  
+이 문서는 **PG-Flow** 방법론을 실제 코드로 구현하기 위한  
 **실질적인 액션 플랜**을 정리한 것이다.
 
 목표:
 
-> 훈련된 모델 \(M\) (예: YOLO/DETR/Faster R-CNN 백본, 또는 NAS cell)에 대해  
+> 훈련된 모델 \(M\) (예: YOLO/DETR/Faster R-CNN 등)에 대해  
 > **아키텍처 DAG + weight 기반 gate**를 사용하는  
-> **weight-aware flow surrogate** \(s(M)\) 계산 모듈을 구현한다.
+> **parameter-gated flow surrogate** \(s(M)\) 계산 모듈을 구현한다.
 
-PG-Flow-N의 전제:
+PG-Flow의 전제:
 
-- **데이터(activation, gradient)를 쓰지 않는다.**
-- 오직 **weight 분포만으로 gate \(g_i\)**를 구성한다.
+- **weight를 이용하여 gate \(g_i\)**를 구성한다.
 - gate는 **G¹/G²/G³ 타입 중 하나**, **gating 패턴은 outgoing / incoming 중 하나**를 선택한다.
 
 ---
@@ -22,23 +21,23 @@ PG-Flow-N의 전제:
 
 구현하고자 하는 구성 요소는 다음 5개다.
 
-1. **그래프 빌더** (`graph_builder.py`)  
-   → PyTorch 모델 → 모듈 단위 DAG(`nodes`, `edges`, `topo_order`)
+1. **그래프 빌더** (`./object_detection/models/code`)  
+   → object detetction 모델 아키텍처 → Neaural architecture graph(`nodes featrure(X)`, `edges(E)`, `Operator(O)`)
 
 2. **웨이트 추출기** (`weight_extractor.py`)  
    → 각 노드(Node)에 대해 effective weight \(W_i\) 추출
 
-3. **Gate 함수 모듈** (`gate_functions.py`)  
+3. **Flow 시뮬레이터** (`Flow_Surrogate_Generator.py`)  
+   * type of Parameter-Gate
    → \(W_i\)들로부터 대표값 \(e_i\) 계산  
    → z-score → gate \(g_i\)  
    → **Gate 타입 G¹/G²/G³ 중 선택 가능**
+   * Gating pattern
+   → DAG와 gate를 이용해 imformation flow를 흘림  
+   → **gating 패턴(Outgoing / Incoming)을 선택해서 적용** 
 
-4. **Flow 시뮬레이터** (`flow_simulator.py`)  
-   → DAG와 gate를 이용해 FGP-style random flow를 흘림  
-   → **gating 패턴(Outgoing / Incoming)을 선택해서 적용**
-
-5. **Surrogate 계산 래퍼** (`surrogate_computer.py`)  
-   → `model` 하나를 받아 위 1–4단계를 호출해 \(s(M)\) 반환
+4. **Surrogate 계산 래퍼**  
+   → `model`을 받아 위 1–3단계를 호출해 \(s(M)\) 반환
 
 + 실험 스크립트:
 

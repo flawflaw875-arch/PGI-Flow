@@ -279,8 +279,8 @@ s_prime = compute_pgflow_surrogate(
 
 | 단계 | 수식 (Formula) | 설명 |
 | :--- | :--- | :--- |
-| **1. Fan-in** | $\text{fan\_in}_i = C_{in} \cdot k^2$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
-| **2. 대표값** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\text{fan\_in}_i}} + \epsilon \right)$ | $\|\theta_i\|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
+| **1. Fan-in** | $fan\_in_i = C_{in} \cdot k^2$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
+| **2. 대표값** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{fan\_in_i}} + \epsilon \right)$ | $\|\theta_i\|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
 | **3. 이후** | $G^1$과 동일 (Z-score → Gate) | |
 
 **🛠 구현 함수 매핑**
@@ -348,10 +348,10 @@ s_prime = simulate_pgflow(
 
 ### 5.3 Flow 구현 절차
 
-1. **인덱스 매핑:** `Node.id` → `0..N-1` 인덱스 변환
-2. **엣지 변환:** `edges` → `edges_idx`
+1. **인덱스 매핑:** Node.id → 0..N-1 인덱스 변환
+2. **엣지 변환:** edges → edges_idx
 3. **초기화:** Input 노드에 `torch.randn` 초기 메시지 할당
-4. **위상 정렬:** `topological_sort(num_nodes, edges_idx)` 수행
+4. **위상 정렬:** topological_sort(num_nodes, edges_idx) 수행
 5. **순회 및 계산:**
    - **Outgoing:** $msgs = f_j \cdot g_j$ 후 Sum
    - **Incoming:** $\sum(f_j)$ 후 $\cdot g_i$

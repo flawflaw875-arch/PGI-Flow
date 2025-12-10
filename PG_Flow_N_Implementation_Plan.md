@@ -22,18 +22,18 @@ PG-Flow의 전제:
 구현하고자 하는 구성 요소는 다음 4개다.
 
 1. **그래프 빌더** (`./object_detection/models/code`)  
-   → object detetction 모델 아키텍처 → Neaural architecture graph(`nodes featrure(X)`, `edges(E)`, `Operator(O)`)
+   → object detection 모델 아키텍처 → Neural architecture graph (`nodes feature(X)`, `edges(E)`, `Operator(O)`)
 
 2. **웨이트 추출기** (`weight_extractor.py`)  
    → 각 노드(Node)에 대해 effective weight $(W_i)$ 추출
 
 3. **Flow 시뮬레이터** (`Flow_Surrogate_Generator.py`)  
-   * type of Parameter-Gate\
+   * Type of Parameter-Gate  
    → $(W_i)$들로부터 대표값 $(e_i)$ 계산  
    → z-score → gate $(g_i)$  
    → **Gate 타입 G¹/G²/G³ 중 선택 가능**
-   * Gating pattern\
-   → DAG와 gate를 이용해 imformation flow를 흘림  
+   * Gating pattern  
+   → DAG와 gate를 이용해 information flow를 흘림  
    → **gating 패턴(Outgoing / Incoming)을 선택해서 적용** 
 
 4. **Surrogate 계산 래퍼**  
@@ -50,7 +50,7 @@ PG-Flow/
 │   ├── Graph/                    # 생성된 아키텍처별 DAG
 │   └── Ops.json                  # Op 리스트
 ├── parameter_regenerator/        # 아키텍처별 웨이트에 대해 DAG에 적합한 형식으로 변환
-└── compute_surrogates.py         # 여러 모델 아키텍처와 웨이트에 대해 $s(M)$ 계산
+└── compute_surrogates.py         # 여러 모델 아키텍처와 웨이트에 대해 s(M) 계산
 ```
 
 ---
@@ -58,6 +58,7 @@ PG-Flow/
 ## 2. 아키텍처별 그래프 설계 (`./object_detection_models/code/`)
 
 ### 2.1 Operator 리스트 정의
+
 - `0: Conv_1x1`
 - `1: Conv_3x3`
 - `2: Conv_3x3_DS`
@@ -93,31 +94,35 @@ PG-Flow/
 
 ### 2.2 Node 및 Edge 자료구조 정의
 
-* Node 구조:
+**Node 구조:**
 - `id: int` – 그래프 내 node ID  
 - `op_idx: int` – node별 Operator ID  
 - `op_name: str` – Operator 이름  
 - `annotation: str` – 기타 설명  
 
-* Edge 구조:
-- `[$id_i$, $id_j$]` – $node_i$(정보출력 노드) → $node_j$(정보입력 노드)
+**Edge 구조:**
+- $[id_i, id_j]$ – $node_i$(정보출력 노드) → $node_j$(정보입력 노드)
 
 ### 2.3 Architecture 종류
 
-* YOLO Family (Real-time One-stage)
-   * YOLOv8 (Anchor-free, SOTA): YOLOv8-n, YOLOv8-m
-   * YOLOv5 (Anchor-based, Industry Standard): YOLOv5-s, YOLOv5-x
-   * YOLOX (Decoupled Head, Anchor-free): YOLOX-s, YOLOX-l
-* R-CNN Family (Two-stage)
-   * Faster R-CNN (Standard Baseline): R50-FPN, R101-FPN
-   * Cascade R-CNN (High Quality): R50-FPN
-* Legacy One-stage (Baselines)
-   * SSD: SSD300-VGG16, MobileNetV2-SSDLite
-   * RetinaNet: R50-FPN (Focal Loss Base)
-* EfficientDet (Scalable)
-   * EfficientDet: D0, D3 (BiFPN + Compound Scaling)
-* Transformer (End-to-End)
-   * DETR: R50 (Encoder-Decoder Attention)
+**YOLO Family (Real-time One-stage)**
+- YOLOv8 (Anchor-free, SOTA): YOLOv8-n, YOLOv8-m
+- YOLOv5 (Anchor-based, Industry Standard): YOLOv5-s, YOLOv5-x
+- YOLOX (Decoupled Head, Anchor-free): YOLOX-s, YOLOX-l
+
+**R-CNN Family (Two-stage)**
+- Faster R-CNN (Standard Baseline): R50-FPN, R101-FPN
+- Cascade R-CNN (High Quality): R50-FPN
+
+**Legacy One-stage (Baselines)**
+- SSD: SSD300-VGG16, MobileNetV2-SSDLite
+- RetinaNet: R50-FPN (Focal Loss Base)
+
+**EfficientDet (Scalable)**
+- EfficientDet: D0, D3 (BiFPN + Compound Scaling)
+
+**Transformer (End-to-End)**
+- DETR: R50 (Encoder-Decoder Attention)
 
 ---
 
@@ -125,95 +130,99 @@ PG-Flow/
 
 ### 3.1 파일 구조 (Root Schema)
 
-파일의 최상위 루트는 **메타데이터(meta)**와 가중치 데이터(node_weights) 두 가지 키로 구성됩니다.
+파일의 최상위 루트는 메타데이터(meta)와 가중치 데이터(node_weights) 두 가지 키로 구성됩니다.
 
 ```json
 {
   "meta": {
-    "architecture": "string",       // 예: "detr_r50"
-    "format_version": "string",     // 예: "1.0"
-    "source_framework": "string",   // 예: "pytorch"
-    "created_at": "string"          // 예: "2025-10-21T14:30:00"
+    "architecture": "string",
+    "format_version": "string",
+    "source_framework": "string",
+    "created_at": "string"
   },
   "node_weights": {
-    "NODE_ID_1": { ... },           // 그래프의 Node ID (문자열)
-    "NODE_ID_2": { ... },
-    ...
+    "NODE_ID_1": { },
+    "NODE_ID_2": { },
+    "...": "..."
   }
 }
 ```
 
-### 3.2. 노드 가중치 객체 (node_weights)
+### 3.2 노드 가중치 객체 (node_weights)
 
 그래프 정의 파일(*_graph.json)에 명시된 Node ID를 Key로 사용합니다. 각 노드는 해당 연산에 필요한 텐서들을 포함합니다.
 
-* 3.2.1 개별 노드 구조
+#### 3.2.1 개별 노드 구조
 
 ```json
-"0": {
-  "op_type": "Conv_3x3",   // 연산 종류 (필수)
-  "has_weight": true,      // 가중치 존재 여부 (필수)
-  "tensors": {             // 텐서 데이터 맵 (필수)
-    "weight": { ... },     // 핵심 가중치 (Key 이름 고정)
-    "bias": { ... },       // (선택) 바이어스
-    "running_mean": { ... }, // (선택) BN 통계
-    "running_var": { ... }   // (선택) BN 통계
+{
+  "0": {
+    "op_type": "Conv_3x3",
+    "has_weight": true,
+    "tensors": {
+      "weight": { },
+      "bias": { },
+      "running_mean": { },
+      "running_var": { }
+    }
   }
 }
 ```
 
-### 3.3. 텐서 객체 (tensors)
+### 3.3 텐서 객체 (tensors)
+
 실제 가중치 값을 담는 객체입니다. 텐서의 **차원 정보(Shape)**와 **데이터(Data)**를 포함합니다.
 
 ```json
-"weight": {
-  "dtype": "float32",            // 데이터 타입 ("float32", "float16")
-  "shape": [64, 3, 3, 3],        // 텐서 형상 [Out, In, K, K] 등
-  "data": [0.12, -0.05, 0.0, ...] // Flattened (1차원) 리스트
+{
+  "weight": {
+    "dtype": "float32",
+    "shape": [64, 3, 3, 3],
+    "data": [0.12, -0.05, 0.0, "..."]
+  }
 }
 ```
 
-* data: 다차원 텐서를 view(-1) 또는 flatten()하여 1차원 리스트로 저장합니다. 로드 시 shape를 이용해 복원합니다.
+data는 다차원 텐서를 view(-1) 또는 flatten()하여 1차원 리스트로 저장합니다. 로드 시 shape를 이용해 복원합니다.
 
-### 3.4. 연산 타입별 표준 스키마
+### 3.4 연산 타입별 표준 스키마
+
 변환 코드 작성 시, 연산 타입에 따라 다음 키(Key) 이름을 준수해야 합니다.
 
-A. 컨볼루션 / 선형 레이어 (Conv2d, Linear)
-* 필수 텐서: weight
+**A. 컨볼루션 / 선형 레이어 (Conv2d, Linear)**
+- 필수 텐서: weight
+- 선택 텐서: bias
+- Shape 규칙:
+  - Conv: [Out_Channels, In_Channels, Kernel_H, Kernel_W]
+  - Linear: [Out_Features, In_Features]
 
-* 선택 텐서: bias
+**B. 정규화 레이어 (BatchNorm, LayerNorm)**
+- 필수 텐서:
+  - weight: Scale 파라미터 ($\gamma$)
+  - bias: Shift 파라미터 ($\beta$)
+- 선택 텐서 (BN):
+  - running_mean: 이동 평균
+  - running_var: 이동 분산
 
-* Shape 규칙:
-   * Conv: [Out_Channels, In_Channels, Kernel_H, Kernel_W]
-   * Linear: [Out_Features, In_Features]
+**C. 가중치가 없는 연산 (ReLU, Pooling, Add)**
+- has_weight: false
+- tensors: {} (빈 객체)
 
-B. 정규화 레이어 (BatchNorm, LayerNorm)
-* 필수 텐서:
-   * weight: Scale 파라미터 ($\gamma$)
-   * bias: Shift 파라미터 ($\beta$)
+### 3.5 특수 케이스 처리 규칙 (Implementation Rules)
 
-* 선택 텐서 (BN):
-   * running_mean: 이동 평균
-   * running_var: 이동 분산
-
-C. 가중치가 없는 연산 (ReLU, Pooling, Add)
-* has_weight: false
-* tensors: {} (빈 객체)
-
-### 3.5. 특수 케이스 처리 규칙 (Implementation Rules)
 변환기(Exporter) 구현 시 반드시 지켜야 할 규칙입니다.
 
- 1. Transformer Q/K/V 분할 저장 원칙:
+**1. Transformer Q/K/V 분할 저장 원칙:**
 
-   * 프레임워크 내부에서 하나의 큰 텐서(예: in_proj_weight)로 합쳐져 있더라도, 그래프 노드 정의에 맞춰 잘라서(Slicing) 저장해야 합니다.
+프레임워크 내부에서 하나의 큰 텐서(예: in_proj_weight)로 합쳐져 있더라도, 그래프 노드 정의에 맞춰 잘라서(Slicing) 저장해야 합니다.
 
-   * 예: Q_Node에는 텐서의 앞부분(:embed_dim), K_Node에는 중간 부분(embed_dim:2*embed_dim)을 저장합니다.
+예: Q_Node에는 텐서의 앞부분(:embed_dim), K_Node에는 중간 부분(embed_dim:2*embed_dim)을 저장합니다.
 
- 2. 공유 파라미터 중복 저장 원칙 (Deep Copy):
+**2. 공유 파라미터 중복 저장 원칙 (Deep Copy):**
 
-   * EfficientDet의 Head처럼 여러 노드가 동일한 파라미터를 공유하더라도, 각 노드 ID 항목에 데이터를 중복하여 기록합니다.
+EfficientDet의 Head처럼 여러 노드가 동일한 파라미터를 공유하더라도, 각 노드 ID 항목에 데이터를 중복하여 기록합니다.
 
-   * 이는 엔진(Step 2)이 복잡한 참조 로직 없이 노드 ID만으로 데이터를 로드할 수 있게 하기 위함입니다.
+이는 엔진(Step 2)이 복잡한 참조 로직 없이 노드 ID만으로 데이터를 로드할 수 있게 하기 위함입니다.
 
 ---
 
@@ -232,10 +241,10 @@ C. 가중치가 없는 연산 (ReLU, Pooling, Add)
 ```python
 s_prime = compute_pgflow_surrogate(
     model,
-    gate_type="rel_norm",      # "rel_norm" | "scale_norm" | "norm_sparsity"
+    gate_type="rel_norm",
     beta=0.2,
     lam=1.0,
-    gating_pattern="outgoing", # "outgoing" | "incoming"
+    gating_pattern="outgoing",
 )
 ```
 
@@ -252,14 +261,14 @@ s_prime = compute_pgflow_surrogate(
 
 | 단계 | 수식 (Formula) | 설명 |
 | :--- | :--- | :--- |
-| **1. 대표값 ($e_i$)** | $$e_i = \log\left( \frac{\|W_i\|_F}{\sqrt{|\theta_i|}} + \epsilon \right)$$ | 전체 파라미터 수($|\theta_i|$)로 정규화된 Frobenius Norm |
-| **2. Z-Score ($\hat{e}_i$)** | $$\hat{e}_i = \frac{e_i - \mu_e}{\sigma_e}$$ | 전체 레이어 분포 내에서의 상대적 위치 산출 |
-| **3. Gate ($g_i$)** | $$g_i = 1 + \beta \tanh(\lambda \hat{e}_i)$$ | $\beta=0.2, \lambda=1.0$ (예시) |
+| **1. 대표값 ($e_i$)** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\|\theta_i\|}} + \epsilon \right)$ | 전체 파라미터 수($\|\theta_i\|$)로 정규화된 Frobenius Norm |
+| **2. Z-Score ($\hat{e}_i$)** | $\hat{e}_i = \frac{e_i - \mu_e}{\sigma_e}$ | 전체 레이어 분포 내에서의 상대적 위치 산출 |
+| **3. Gate ($g_i$)** | $g_i = 1 + \beta \tanh(\lambda \hat{e}_i)$ | $\beta=0.2, \lambda=1.0$ (예시) |
 
 **🛠 구현 함수 매핑**
-* `compute_node_stats_rel_norm(nodes)` → `{node_id: e_i}`
-* `normalize_stats(stats)` → `{node_id: \hat{e}_i}`
-* `gate_tanh(normed_stats, beta, lam)` → `{node_id: g_i}`
+* `compute_node_stats_rel_norm(nodes)` → $\{node_{id}: e_i\}$
+* `normalize_stats(stats)` → $\{node_{id}: \hat{e}_i\}$
+* `gate_tanh(normed_stats, beta, lam)` → $\{node_{id}: g_i\}$
 
 ---
 
@@ -270,12 +279,12 @@ s_prime = compute_pgflow_surrogate(
 
 | 단계 | 수식 (Formula) | 설명 |
 | :--- | :--- | :--- |
-| **1. Fan-in 계산** | $$\text{fan\_in}_i = C_{in} \cdot k^2$$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
-| **2. 대표값 ($e_i$)** | $$e_i = \log\left( \frac{\|W_i\|_F}{\sqrt{\text{fan\_in}_i}} + \epsilon \right)$$ | $|\theta_i|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
+| **1. Fan-in 계산** | $\text{fan\_in}_i = C_{in} \cdot k^2$ | $W_i \in \mathbb{R}^{C_{out} \times C_{in} \times k \times k}$ 일 때 입력 수용 영역 크기 |
+| **2. 대표값 ($e_i$)** | $e_i = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\text{fan\_in}_i}} + \epsilon \right)$ | $\|\theta_i\|$ 대신 **Fan-in**으로 나누어 Scale-Invariant 특성 확보 |
 | **3. 이후 단계** | $G^1$과 동일 (Z-score $\rightarrow$ Gate) | |
 
 **🛠 구현 함수 매핑**
-* `compute_node_stats_scale_norm(nodes)` → `{node_id: e_i}`
+* `compute_node_stats_scale_norm(nodes)` → $\{node_{id}: e_i\}$
 * *Note:* Conv 레이어가 아닌 경우 $G^1$ 방식으로 Fallback 처리.
 
 ---
@@ -287,12 +296,12 @@ s_prime = compute_pgflow_surrogate(
 
 | 항목 | 수식 (Formula) | 설명 |
 | :--- | :--- | :--- |
-| **Norm Term** | $$e_i^{(N)} = \log\left( \frac{\|W_i\|_F}{\sqrt{|\theta_i|}} + \epsilon \right)$$ | $G^1$의 대표값과 동일 |
-| **Sparsity Term** | $$s_i = \frac{1}{|\theta_i|} \sum_{\theta \in i} \mathbf{1}(|\theta| < \tau)$$ | $\tau \approx 10^{-3}$, Dead Parameter 비율 |
-| **최종 대표값** | $$e_i = e_i^{(N)} - \gamma s_i$$ | $\gamma > 0$ (예: 0.5), Sparsity가 높을수록 대표값 차감 |
+| **Norm Term** | $e_i^{(N)} = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\|\theta_i\|}} + \epsilon \right)$ | $G^1$의 대표값과 동일 |
+| **Sparsity Term** | $s_i = \frac{1}{\|\theta_i\|} \sum_{\theta \in i} \mathbf{1}(\|\theta\| < \tau)$ | $\tau \approx 10^{-3}$, Dead Parameter 비율 |
+| **최종 대표값** | $e_i = e_i^{(N)} - \gamma s_i$ | $\gamma > 0$ (예: 0.5), Sparsity가 높을수록 대표값 차감 |
 
 **🛠 구현 함수 매핑**
-* `compute_node_stats_norm_sparsity(nodes, tau, gamma)` → `{node_id: e_i}`
+* `compute_node_stats_norm_sparsity(nodes, tau, gamma)` → $\{node_{id}: e_i\}$
 
 ---
 
@@ -316,7 +325,7 @@ s_prime = simulate_pgflow(
     edges,
     gates,
     d_hidden=64,
-    gating_pattern="outgoing",  # 또는 "incoming"
+    gating_pattern="outgoing",
 )
 ```
 
@@ -334,20 +343,21 @@ s_prime = simulate_pgflow(
 
 | 패턴 | 코드명 | 수식 | 해석 |
 | :--- | :--- | :--- | :--- |
-| **P¹: Outgoing** | `"outgoing"` | $$m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$$ | **보내는 쪽($j$)**이 얼마나 크게 말하는지를 Gate로 반영 |
-| **P²: Incoming** | `"incoming"` | $$m_i = g_i \cdot \sum_{j} f_j$$ | **받는 쪽($i$)**이 정보를 얼마나 받아들일지를 Gate로 반영 |
+| **P¹: Outgoing** | `"outgoing"` | $m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$ | **보내는 쪽($j$)**이 얼마나 크게 말하는지를 Gate로 반영 |
+| **P²: Incoming** | `"incoming"` | $m_i = g_i \cdot \sum_{j} f_j$ | **받는 쪽($i$)**이 정보를 얼마나 받아들일지를 Gate로 반영 |
 
 ### 5.3 Flow 구현 절차
 
-1. **인덱스 매핑:** `Node.id` $\rightarrow$ `0..N-1` 인덱스 변환
-2. **엣지 변환:** `edges` $\rightarrow$ `edges_idx`
+1. **인덱스 매핑:** `Node.id` → `0..N-1` 인덱스 변환
+2. **엣지 변환:** `edges` → `edges_idx`
 3. **초기화:** Input 노드에 `torch.randn` 초기 메시지 할당
 4. **위상 정렬:** `topological_sort(num_nodes, edges_idx)` 수행
 5. **순회 및 계산:**
-   * **Outgoing:** `msgs = f_j * g_j` 후 Sum
-   * **Incoming:** `sum(f_j)` 후 `* g_i`
+   - **Outgoing:** `msgs = $(f_j)$ * $(g_j)$` 후 Sum
+   - **Incoming:** `sum($f_j$)` 후 `* $(g_i)$`
 6. **최종 산출:** Input 노드 메시지 합산 및 정규화
-   $$s(M) = \frac{s_{\text{prime}}}{\|s_{\text{prime}}\| + \epsilon}$$
+
+$$s(M) = \frac{s_{\text{prime}}}{\|s_{\text{prime}}\| + \epsilon}$$
 
 **✅ 액션 아이템**
 

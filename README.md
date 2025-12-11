@@ -328,7 +328,7 @@ s_prime = compute_pgflow_surrogate(
 
 ---
 
-### 5. Gate Application Pattern (Layer 2) – `flow_simulator.py`
+### 3.5. Gate Application Pattern (Layer 2) – `flow_simulator.py`
 
 Once gate values $(g_i)$ (computed from one of G¹~G³) are ready, decide **where in the Flow to multiply them**. This choice is controlled by `gating_pattern`.
 
@@ -342,7 +342,7 @@ s_prime = simulate_pgflow(
 )
 ```
 
-#### 5.1 Common Inputs
+#### 3.5.1 Common Inputs
 
 | Variable Name | Type | Description |
 | :--- | :--- | :--- |
@@ -352,14 +352,14 @@ s_prime = simulate_pgflow(
 | `d_hidden` | `int` | Hidden vector dimension |
 | `gating_pattern` | `str` | `"outgoing"` or `"incoming"` |
 
-#### 5.2 Gating Pattern Comparison (P¹ vs P²)
+#### 3.5.2 Gating Pattern Comparison (P¹ vs P²)
 
 | Pattern | Code Name | Formula | Interpretation |
 | :--- | :--- | :--- | :--- |
 | **P¹: Outgoing** | `"outgoing"` | $m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$ | Gate reflects **how loudly the sender** ($j$) speaks |
 | **P²: Incoming** | `"incoming"` | $m_i = g_i \cdot \sum_{j} f_j$ | Gate reflects **how much the receiver** ($i$) accepts |
 
-#### 5.3 Flow Implementation Procedure
+#### 3.5.3 Flow Implementation Procedure
 
 1. **Index Mapping:** Convert node.id → 0..N-1 indices
 2. **Edge Conversion:** edges → edges_idx

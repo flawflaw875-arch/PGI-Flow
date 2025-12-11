@@ -22,7 +22,7 @@ This research proposes the following key ideas:
     *   `P` is a regression model that takes the fingerprint of the source model `s` and the features of the target dataset `f` as input to predict the expected transfer performance of the source model in the target site.
     *   **Supporting Strategic Decision-Making:** `P` goes beyond merely predicting performance; it provides strategic insights into which type, single-site expert model or multi-site generalist model, is more suitable for the new site. of model
 
-## 3. Implementation Plan (Parameter-Gated Information Flow Surrogate ($(s(M))$)
+## 3. Implementation Plan (Parameter-Gated Information Flow Surrogate $(s(M))$)
 
 **Action Plan**
 

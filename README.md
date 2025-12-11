@@ -367,8 +367,6 @@ s_prime = simulate_pgiflow(
 3. **Initialization:** Assign initial message `torch.randn` to input nodes
 4. **Topological Sort:** Perform topological_sort(num_nodes, edges_idx)
 5. **Iteration and Computation:**
-   - **Outgoing:** $msgs = f_j \cdot g_j$ then Sum
-   - **Incoming:** Sum $f_j$ then $\cdot g_i$
+   - **Outgoing:** $m = f_j \cdot g_j$ then Sum
+   - **Incoming:** $m = sum f_j$ then $\cdot g_i$
 6. **Final Output:** Aggregate and normalize input node messages
-
-$$s(M) = \frac{s_{\text{prime}}}{\|s_{\text{prime}}\| + \epsilon}$$

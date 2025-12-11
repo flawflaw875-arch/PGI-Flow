@@ -1,5 +1,5 @@
-# PG-Flow Surrogates
-Predicting Object Detection Transferability via Parameter-Gated Flow Surrogates
+# PGI-Flow Surrogates
+Predicting Object Detection Transferability via Parameter-Gated Information Flow Surrogates
 
 ## 1. Research Background and Problem Definition
 
@@ -11,7 +11,7 @@ This project aims to address this issue by developing a system that predicts the
 
 This research proposes the following key ideas:
 
-1.  **'Parameter-Based Flow Surrogate' (`s`)**:
+1.  **'Parameter-Gated Information Flow Surrogate' (`s`)**:
     *   **Overcoming Limitations of Existing Research:** Previous studies primarily analyzed the architecture's structure or used only the final output/single-layer features to predict transfer performance. This often failed to reflect how the model was actually trained (parameter information), leading to the underestimation of the potential of 'shallow expert' models.
     *   **Differentiation of This Study:** We integrate the statistical characteristics of the trained model's parameters (e.g., weight norms, variance) into the information flow simulation. This generates a unique **'fingerprint' (`s`)** formed by the results of training on a specific dataset, representing not only the model's structure but also the intrinsic characteristics and learning experiences of the model.
 
@@ -22,13 +22,13 @@ This research proposes the following key ideas:
     *   `P` is a regression model that takes the fingerprint of the source model `s` and the features of the target dataset `f` as input to predict the expected transfer performance of the source model in the target site.
     *   **Supporting Strategic Decision-Making:** `P` goes beyond merely predicting performance; it provides strategic insights into which type, single-site expert model or multi-site generalist model, is more suitable for the new site. of model
 
-## 3. Implementation Plan (Parameter-Gated Flow Surrogate $(s(M))$)
+## 3. Implementation Plan (Parameter-Gated Information Flow Surrogate $(s(M))$)
 
 **Action Plan**
 
 > About trained mode $(M)$ (ex. YOLO/DETR/Faster R-CNN etc)  
 > Using **Architecture DAG + weight based gate** 
-> Build calculator module **parameter-gated flow surrogate** $(s(M))$
+> Build calculator module **parameter-gated information flow surrogate** $(s(M))$
 
 ### 3.0. Overall Architecture Overview
 
@@ -57,7 +57,7 @@ There are 4 components to implement:
 ### 3.1. File/Directory Structure
 
 ```text
-PG-Flow/
+PGI-Flow/
 ├── object_detection_models/
 │   ├── code/                     # Model → DAG code
 │   ├── Graph/                    # Generated architecture-specific DAGs
@@ -252,7 +252,7 @@ This allows the engine (Step 2) to load data using only the node ID without comp
 To achieve this, three gate types are defined:
 
 ```python
-s_prime = compute_pgflow_surrogate(
+s_prime = compute_pgiflow_surrogate(
     model,
     gate_type="rel_norm",
     beta=0.2,
@@ -309,9 +309,10 @@ s_prime = compute_pgflow_surrogate(
 
 | Item | Formula | Description |
 | :--- | :--- | :--- |
-| **Norm Term** | $e_i^{(N)} = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\|\theta_i\|}} + \epsilon \right)$ | Same as $G^1$ representative value |
-| **Sparsity Term** | $s_i = \frac{1}{\|\theta_i\|} \sum_{\theta \in i} \mathbf{1}(\|\theta\| < \tau)$ | $\tau \approx 10^{-3}$, ratio of dead parameters |
-| **Final Representative Value** | $e_i = e_i^{(N)} - \gamma s_i$ | $\gamma > 0$ (e.g., 0.5), deduct representative value when sparsity is high |
+| **1. Norm Term** | $e_i^{(N)} = \log\left( \frac{\lVert W_i \rVert_F}{\sqrt{\|\theta_i\|}} + \epsilon \right)$ | Same as $G^1$ representative value |
+| **2. Sparsity Term** | $s_i = \frac{1}{\|\theta_i\|} \sum_{\theta \in i} \mathbf{1}(\|\theta\| < \tau)$ | $\tau \approx 10^{-3}$, ratio of dead parameters |
+| **3. Final Representative Value** | $e_i = e_i^{(N)} - \gamma s_i$ | $\gamma > 0$ (e.g., 0.5), deduct representative value when sparsity is high |
+| **4. Afterwards** | Same as $G^1$ (Z-score → Gate) | |
 
 **🛠 Implementation Function Mapping**
 * `compute_node_stats_norm_sparsity(nodes, tau, gamma)` → $\{node_{id}: e_i\}$
@@ -333,7 +334,7 @@ s_prime = compute_pgflow_surrogate(
 Once gate values $(g_i)$ (computed from one of G¹~G³) are ready, decide **where in the Flow to multiply them**. This choice is controlled by `gating_pattern`.
 
 ```python
-s_prime = simulate_pgflow(
+s_prime = simulate_pgiflow(
     nodes,
     edges,
     gates,

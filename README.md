@@ -24,7 +24,7 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
-![The way of Graph representation](./images/Graph-representation.png)
+![The way of Graph representation](./images/Graph-representation.svg)
 
 ## 4. Implementation Plan
 

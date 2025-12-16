@@ -22,7 +22,11 @@ This research proposes the following key ideas:
     *   `P` is a regression model that takes the fingerprint of the source model `s` and the features of the target dataset `f` as input to predict the expected transfer performance of the source model in the target site.
     *   **Supporting Strategic Decision-Making:** `P` goes beyond merely predicting performance; it provides strategic insights into which type, single-site expert model or multi-site generalist model, is more suitable for the new site. of model
 
-## 3. Implementation Plan (Parameter-Gated Information Flow Surrogate)
+## 3. Definition of Parameter-Gated Information Flow Surrogate
+
+![The way of Graph representation](./images/Graph-representation.png)
+
+## 4. Implementation Plan
 
 **Action Plan**
 
@@ -30,7 +34,7 @@ This research proposes the following key ideas:
 > Using **Architecture DAG + weight based gate** 
 > Build calculator module **parameter-gated information flow surrogate** $(s(M))$
 
-### 3.0. Overall Architecture Overview
+### 4.0. Overall Architecture Overview
 
 There are 4 components to implement:
 
@@ -54,7 +58,7 @@ There are 4 components to implement:
 
 ---
 
-### 3.1. File/Directory Structure
+### 4.1. File/Directory Structure
 
 ```text
 PGI-Flow/
@@ -68,9 +72,9 @@ PGI-Flow/
 
 ---
 
-### 3.2. Architecture-Specific Graph Design (`./object_detection_models/code/`)
+### 4.2. Architecture-Specific Graph Design (`./object_detection_models/code/`)
 
-#### 3.2.1 Operator List Definition
+#### 4.2.1 Operator List Definition
 
 - `0: Conv_1x1`
 - `1: Conv_3x3`
@@ -105,7 +109,7 @@ PGI-Flow/
 - `30: Sub`
 - `31: Exp`
 
-#### 3.2.2 Node and Edge Data Structure Definition
+#### 4.2.2 Node and Edge Data Structure Definition
 
 **Node Structure:**
 - `id: int` – Node ID within the graph  
@@ -116,7 +120,7 @@ PGI-Flow/
 **Edge Structure:**
 - $[id_i, id_j]$ – $node_i$ (information output node) → $node_j$ (information input node)
 
-#### 3.2.3 Architecture Types
+#### 4.2.3 Architecture Types
 
 **YOLO Family (Real-time One-stage)**
 - YOLOv8 (Anchor-free, SOTA): YOLOv8-n, YOLOv8-m
@@ -139,9 +143,9 @@ PGI-Flow/
 
 ---
 
-### 3.3. Universal Weight Exchange Format (UWEF) Definition (`./parameter_regenerator/`)
+### 4.3. Universal Weight Exchange Format (UWEF) Definition (`./parameter_regenerator/`)
 
-#### 3.3.1 File Structure (Root Schema)
+#### 4.3.1 File Structure (Root Schema)
 
 The top-level root of the file consists of two keys: metadata (meta) and weight data (node_weights).
 
@@ -161,7 +165,7 @@ The top-level root of the file consists of two keys: metadata (meta) and weight 
 }
 ```
 
-#### 3.3.2 Node Weight Object (node_weights)
+#### 4.3.2 Node Weight Object (node_weights)
 
 Use Node IDs specified in the graph definition file (*_graph.json) as keys. Each node contains tensors required for the corresponding operation.
 
@@ -182,7 +186,7 @@ Use Node IDs specified in the graph definition file (*_graph.json) as keys. Each
 }
 ```
 
-#### 3.3.3 Tensor Object (tensors)
+#### 4.3.3 Tensor Object (tensors)
 
 An object containing actual weight values. Includes **dimension information (Shape)** and **data**.
 
@@ -198,7 +202,7 @@ An object containing actual weight values. Includes **dimension information (Sha
 
 Data stores multidimensional tensors as 1D lists using view(-1) or flatten(). Shape is used to restore the tensor when loaded.
 
-#### 3.3.4 Standard Schema by Operation Type
+#### 4.3.4 Standard Schema by Operation Type
 
 When writing conversion code, respect the following key names according to operation type.
 
@@ -221,7 +225,7 @@ When writing conversion code, respect the following key names according to opera
 - has_weight: false
 - tensors: {} (empty object)
 
-#### 3.3.5 Special Case Handling Rules (Implementation Rules)
+#### 4.3.5 Special Case Handling Rules (Implementation Rules)
 
 Rules that must be observed when implementing the converter (Exporter).
 
@@ -239,9 +243,9 @@ This allows the engine (Step 2) to load data using only the node ID without comp
 
 ---
 
-### 3.4. Gate Value Design (Layer 1) – `gate_functions.py`
+### 4.4. Gate Value Design (Layer 1) – `gate_functions.py`
 
-#### 3.4.0 Gate Design Principles
+#### 4.4.0 Gate Design Principles
 
 - Gate uses **only weight $(W)$**
 - Gate(W) satisfies:
@@ -267,7 +271,7 @@ s_prime = compute_pgiflow_surrogate(
 
 ---
 
-#### 3.4.1 G¹: Relative Norm Gate (`rel_norm`)
+#### 4.4.1 G¹: Relative Norm Gate (`rel_norm`)
 
 > **💡 Core Concept**
 > "Modules with weight **energy** larger than average open the gate ($\uparrow$), modules with smaller energy close it ($\downarrow$)."
@@ -285,7 +289,7 @@ s_prime = compute_pgiflow_surrogate(
 
 ---
 
-#### 3.4.2 G²: Scale-Invariant Norm Gate (`scale_norm`)
+#### 4.4.2 G²: Scale-Invariant Norm Gate (`scale_norm`)
 
 > **💡 Core Concept**
 > "Not just absolute magnitude, but **relative to input (Fan-in)** how much was learned."
@@ -302,7 +306,7 @@ s_prime = compute_pgiflow_surrogate(
 
 ---
 
-#### 3.4.3 G³: Norm + Sparsity Gate (`norm_sparsity`)
+#### 4.4.3 G³: Norm + Sparsity Gate (`norm_sparsity`)
 
 > **💡 Core Concept**
 > "Even if Norm is large, if most values are 0 (Dead), evaluate low; emphasize **densely alive** layers."
@@ -329,7 +333,7 @@ s_prime = compute_pgiflow_surrogate(
 
 ---
 
-### 3.5. Gate Application Pattern (Layer 2) – `flow_simulator.py`
+### 4.5. Gate Application Pattern (Layer 2) – `flow_simulator.py`
 
 Once gate values $(g_i)$ (computed from one of G¹~G³) are ready, decide **where in the Flow to multiply them**. This choice is controlled by `gating_pattern`.
 
@@ -343,24 +347,24 @@ s_prime = simulate_pgiflow(
 )
 ```
 
-#### 3.5.1 Common Inputs
+#### 4.5.1 Common Inputs
 
 | Variable Name | Type | Description |
 | :--- | :--- | :--- |
-| `nodes` | `List[Node]` | List of graph nodes |
-| `edges` | `List[(src_id, dst_id)]` | Edge list based on node IDs |
+| `nodes` | `np.array` | N x D |
+| `edges` | `np.array` | N x N |
 | `gates` | `Dict[node_id -> g_i]` | Dictionary of computed gate values |
 | `d_hidden` | `int` | Hidden vector dimension |
 | `gating_pattern` | `str` | `"outgoing"` or `"incoming"` |
 
-#### 3.5.2 Gating Pattern Comparison (P¹ vs P²)
+#### 4.5.2 Gating Pattern Comparison (P¹ vs P²)
 
 | Pattern | Code Name | Formula | Interpretation |
 | :--- | :--- | :--- | :--- |
 | **P¹: Outgoing** | `"outgoing"` | $m_i = \sum_{j \in \mathcal{N}_{\text{in}}(i)} g_j f_j$ | Gate reflects **how loudly the sender** ($j$) speaks |
 | **P²: Incoming** | `"incoming"` | $m_i = g_i \cdot \sum_{j} f_j$ | Gate reflects **how much the receiver** ($i$) accepts |
 
-#### 3.5.3 Flow Implementation Procedure
+#### 4.5.3 Flow Implementation Procedure
 
 1. **Index Mapping:** Convert node.id → 0..N-1 indices
 2. **Edge Conversion:** edges → edges_idx

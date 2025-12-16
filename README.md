@@ -24,7 +24,9 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
-![The way of Graph representation](./images/Graph-representation.svg)
+![The way of Graph representation](./images/GR.svg)
+
+![Topological Order Assignment](./images/TOA.svg)
 
 ## 4. Implementation Plan
 

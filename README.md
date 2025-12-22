@@ -24,9 +24,15 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
+Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \{0, 1\}^{|\mathcal{V}| \times |O|}$ and edges matrix $\mathbf{E} \in \{0, 1\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
+
 ![The way of Graph representation](./images/GR.png)
 
+
+
+
 ![Topological Order Assignment](./images/TOA.png)
+
 
 ## 4. Implementation Plan
 
@@ -41,7 +47,7 @@ This research proposes the following key ideas:
 There are 4 components to implement:
 
 1. **Graph Builder** (`./object_detection/models/code`)  
-   → Object detection model architecture → Neural architecture graph (`nodes feature(X)`, `edges(E)`, `Operator(O)`)
+   → Object detection model architecture → Neural architecture graph (`nodes features(X)`, `edges(E)`, `Operator(O)`)
 
 2. **Weight Extractor** (`weight_extractor.py`)  
    → Extract effective weight $(W_i)$ for each node
@@ -376,3 +382,7 @@ s_prime = simulate_pgiflow(
    - **Outgoing:** $m = f_j \cdot g_j$ then Sum
    - **Incoming:** $m = sum f_j$ then $\cdot g_i$
 6. **Final Output:** Aggregate and normalize input node messages
+
+## Reference
+
+[1] Hwang, Dongyeong, et al. "Flowerformer: Empowering neural architecture encoding using a flow-aware graph transformer." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2024.

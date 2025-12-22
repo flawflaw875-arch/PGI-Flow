@@ -34,7 +34,19 @@ Extending the work of Hwang et al., Kim et al. proposed a method to estimate the
 
 First, a topological order is assigned to the nodes of the architecture. Specifically, if the maximum order among the incoming nodes connected to a target node is $N$, the order of that target node is defined as $N+1$. 
 
-To mimic the information flow, node embeddings and input messages are randomly initialized, and a random matrix $\mathbf{P} \in \\mathbb{R}^{|\mathcal{O}| \times k}$ is generated.
+To mimic the information flow, node embeddings and input messages are randomly initialized, and a random matrix $\mathbf{P} \in \\mathbb{R}^{|\mathcal{O}| \times k}$ is generated. 
+
+Here, $P = \{P_1, \dots, P_{|\mathcal{O}|}\}$ denotes a set of vectors representing distinct operation primitives. Each vector $P_i$ is randomly sampled from a normal distribution:
+
+$$
+P_i \sim \mathcal{N}(0, \sigma^2)
+$$
+
+Subsequently, the node embedding matrix $H$ is computed as:
+
+$$
+H = \mathbf{P}\mathbf{X}
+$$
 
 ## 4. Implementation Plan
 

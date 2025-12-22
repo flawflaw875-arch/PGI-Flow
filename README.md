@@ -24,7 +24,7 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
-Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \{{0, 1}\}^{|\mathcal{V}| \times |O|}$ and edges matrix $\mathbf{E} \in \{{0, 1}\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
+Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \{0, 1\}^{|\mathcal{V}| \times |O|}$ and edges matrix $\mathbf{E} \in \{0, 1\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
 
 ![The way of Graph representation](./images/GR.png)
 

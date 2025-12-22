@@ -24,7 +24,7 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
-Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \\{0, 1\\}^{|\mathcal{V}| \times |mathcal{O}|}$ and edges matrix $\mathcal{E} \in \\{0, 1\\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
+Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \\{0, 1\\}^{|\mathcal{V}| \times |\mathcal{O}|}$ and edges matrix $\mathcal{E} \in \\{0, 1\\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
 
 ![The way of Graph representation](./images/GR.png)
 
@@ -34,7 +34,7 @@ Extending the work of Hwang et al., Kim et al. proposed a method to estimate the
 
 First, a topological order is assigned to the nodes of the architecture. Specifically, if the maximum order among the incoming nodes connected to a target node is $N$, the order of that target node is defined as $N+1$. 
 
-To mimic the information flow, node embeddings and input messages are randomly initialized, and a random matrix $mathbf{P} \in \\mathbb{R}^{|mathcal{O}| \times k}$ is generated.
+To mimic the information flow, node embeddings and input messages are randomly initialized, and a random matrix $\mathbf{P} \in \\mathbb{R}^{|\mathcal{O}| \times k}$ is generated.
 
 ## 4. Implementation Plan
 

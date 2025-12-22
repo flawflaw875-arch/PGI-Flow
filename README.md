@@ -54,13 +54,26 @@ $$
 f_j = r, \quad \forall v_j \in \mathcal{V}^{(1)}
 $$
 
-Subsequently, by iterating through the topological orders, we compute the arriving info-message $m_i$ for a node $v_i \in \mathcal{V}^{(t)}$ as follows:
+Subsequently, by iterating through the topological orders, we compute the arriving info-message $m_i$ for a node $v_i \in \mathcal{V}^{(T)}$ as follows:
 
 $$
 m_i = \sum_{v_j \in \mathcal{N}^{(i)}} f_j, \quad \text{where } \mathcal{N}^{(i)} = \{v_j : E_{ji} = 1\}
 $$
 
+Subsequently, we convert the arriving info-message $m_i$ based on the operation of the node $v_i$:
 
+$$
+f_i = \alpha m_i + (1 - \alpha)\text{ReLU}([h_i \| m_i]W)
+$$
+
+Here, $[a \| b]$ represents the concatenation of vectors $a$ and $b$, $W \in \mathbb{R}^{2k \times k}$ is a fixed projection matrix, and $\alpha \in [0, 1]$ is a weighting hyperparameter.
+
+Finally, the info-message appearing at the output constitutes the **Information Flow Surrogate**.
+
+Extending the framework of Kim et al., we propose the **Parameter-Gated Information Flow Surrogate ($s$)** to evaluate the transferability of trained models. Our approach introduces two key modifications:
+
+1.  **Gating Mechanism:** We utilize pre-trained weights as gates during the propagation of info-messages, allowing the system to amplify or modulate existing signals.
+2.  **Target-Aware Initialization:** Instead of using random initialization, we employ embeddings derived from the target dataset as the input values.
 
 ## 4. Implementation Plan
 

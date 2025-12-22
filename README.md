@@ -24,11 +24,15 @@ This research proposes the following key ideas:
 
 ## 3. Definition of Parameter-Gated Information Flow Surrogate
 
-Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \\{0, 1\\}^{|\mathcal{V}| \times |O|}$ and edges matrix $\script{E} \in \\{0, 1\\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
+Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et al. proposed a method to define the node features matrix $\mathbf{X} \in \\{0, 1\\}^{|\mathcal{V}| \times |O|}$ and edges matrix $\mathcal{E} \in \\{0, 1\\}^{|\mathcal{V}| \times |\mathcal{V}|}$ for neural network architectures [1]. In this matrix, each column corresponds to a specific operation, and each row is a one-hot vector indicating the operation type associated with the corresponding node.
 
 ![The way of Graph representation](./images/GR.png)
 
+Extending the work of Hwang et al., Kim et al. proposed a method to estimate the potential performance of a neural architecture on a specific dataset by generating a 'Flow Surrogate' through information flow simulation [2]. 
 
+First, a topological order is assigned to the nodes of the architecture. Specifically, if the maximum order among the incoming nodes connected to a target node is $N$, the order of that target node is defined as $N+1$. 
+
+To mimic the information flow, node embeddings and input messages are randomly initialized, and a random vector (or matrix) $P$ corresponding to each operation is generated.
 
 
 ![Topological Order Assignment](./images/TOA.png)
@@ -47,7 +51,7 @@ Neural networks can be represented as Directed Acyclic Graphs (DAGs). Hwang et a
 There are 4 components to implement:
 
 1. **Graph Builder** (`./object_detection/models/code`)  
-   → Object detection model architecture → Neural architecture graph (`nodes features(X)`, `edges(E)`, `Operator(O)`)
+   → Object detection model architecture → Neural architecture graph (`nodes features($\mathbf{X}$)`, `edges($\mathcal{E}$)`, `Operator($\mathcal{O}$)`)
 
 2. **Weight Extractor** (`weight_extractor.py`)  
    → Extract effective weight $(W_i)$ for each node
@@ -386,3 +390,4 @@ s_prime = simulate_pgiflow(
 ## Reference
 
 [1] Hwang, Dongyeong, et al. "Flowerformer: Empowering neural architecture encoding using a flow-aware graph transformer." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2024.
+[2] Kim, Sunwoo, Hyunjin Hwang, and Kijung Shin. "Learning to Flow from Generative Pretext Tasks for Neural Architecture Encoding." arXiv preprint arXiv:2510.18360 (2025).

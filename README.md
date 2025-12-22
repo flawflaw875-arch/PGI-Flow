@@ -36,7 +36,7 @@ First, a topological order is assigned to the nodes of the architecture. Specifi
 
 To mimic the information flow, node embeddings and input messages are randomly initialized, and a random matrix $\mathbf{P} \in \\mathbb{R}^{|\mathcal{O}| \times k}$ is generated. 
 
-Here, $P = \{P_1, \dots, P_{|\mathcal{O}|}\}$ denotes a set of vectors representing distinct operation primitives. Each vector $P_i$ is randomly sampled from a normal distribution:
+Here, $P = \\{P_1, \dots, P_{|\mathcal{O}|}\\}$ denotes a set of vectors representing distinct operation primitives. Each vector $P_i$ is randomly sampled from a normal distribution:
 
 $$
 P_i \sim \mathcal{N}(0, \sigma^2)
@@ -47,6 +47,20 @@ Subsequently, the node embedding matrix $H$ is computed as:
 $$
 H = \mathbf{P}\mathbf{X}
 $$
+
+Finally, let $f_i \in \mathbb{R}^k$ denote the info-message of each node. We initialize the info-messages of order-1 nodes with a randomly sampled vector $r \in \mathbb{R}^k$:
+
+$$
+f_j = r, \quad \forall v_j \in \mathcal{V}^{(1)}
+$$
+
+Subsequently, by iterating through the topological orders, we compute the arriving info-message $m_i$ for a node $v_i \in \mathcal{V}^{(t)}$ as follows:
+
+$$
+m_i = \sum_{v_j \in \mathcal{N}^{(i)}} f_j, \quad \text{where } \mathcal{N}^{(i)} = \{v_j : E_{ji} = 1\}
+$$
+
+
 
 ## 4. Implementation Plan
 

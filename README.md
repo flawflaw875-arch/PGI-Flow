@@ -178,7 +178,7 @@ PGI-Flow/
 
 **R-CNN Family (Two-stage)**
 - Faster R-CNN (Standard Baseline): R50-FPN, R101-FPN
-- Cascade R-CNN (High Quality): R50-FPN
+- Cascade R-CNN (High Quality): R50-FPN, R101-FPN
 
 **Legacy One-stage (Baselines)**
 - SSD: SSD300-VGG16, MobileNetV2-SSDLite
@@ -186,9 +186,6 @@ PGI-Flow/
 
 **EfficientDet (Scalable)**
 - EfficientDet: D0, D3 (BiFPN + Compound Scaling)
-
-**Transformer (End-to-End)**
-- DETR: R50 (Encoder-Decoder Attention)
 
 ---
 

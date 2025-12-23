@@ -88,7 +88,7 @@ Extending the framework of Kim et al., we propose the **Parameter-Gated Informat
 There are 4 components to implement:
 
 1. **Graph Builder** (`./object_detection/models/code`)  
-   → Object detection model architecture → Neural architecture graph: `nodes features($\mathbf{X}$)`, `edges($\mathcal{E}$)`, `Operator($\mathcal{O}$)`
+   → Object detection model architecture → Neural architecture graph: nodes features$(\mathbf{X}$), edges$(\mathcal{E}$)`, `Operator$(\mathcal{O}$)`
 
 2. **Weight Extractor** (`weight_extractor.py`)  
    → Extract effective weight $(W_i)$ for each node
